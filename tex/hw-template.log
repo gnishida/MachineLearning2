@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.9.10)  10 SEP 2014 16:46
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.9.5)  30 SEP 2014 22:45
 entering extended mode
-**D:/GitHub/MachineLearning1/tex/hw-template.tex
-(D:/GitHub/MachineLearning1/tex/hw-template.tex
+**hw-template.tex
+(C:\Users\gen\Documents\GitHub\MachineLearning2\tex\hw-template.tex
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
 abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
@@ -13,7 +13,7 @@ german-x-2013-05-26, nynorsk, oriya, panjabi, pinyin, polish, portuguese, roman
 ian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swissgerm
 an, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, usengl
 ishmax, welsh, loaded.
-(D:\GitHub\MachineLearning1\tex\mlClassDefs.tex
+(C:\Users\gen\Documents\GitHub\MachineLearning2\tex\mlClassDefs.tex
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\article.cls"
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\size12.clo"
@@ -71,7 +71,7 @@ Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \Gin@req@height=\dimen103
 \Gin@req@width=\dimen104
 )
-(C:\Users\gnishida\AppData\Roaming\MiKTeX\2.9\tex\latex\colortbl\colortbl.sty
+(C:\Users\gen\AppData\Roaming\MiKTeX\2.9\tex\latex\colortbl\colortbl.sty
 Package: colortbl 2012/02/13 v1.0a Color table columns (DPC)
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\array.sty"
@@ -93,17 +93,75 @@ Package color Info: Driver file: pdftex.def on input line 130.
 \everycr=\toks17
 \minrowclearance=\skip45
 )
-\c@theorem=\count88
-\c@corollary=\count89
-\c@lemma=\count90
-\c@claim=\count91
-\c@fact=\count92
-\c@definition=\count93
-\c@assumption=\count94
-\c@observation=\count95
-\c@example=\count96
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty"
+Package: amsmath 2013/01/14 v2.14 AMS math features
+\@mathmargin=\skip46
+
+For additional information on amsmath, use the `?' option.
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amstext.sty"
+Package: amstext 2000/06/29 v2.01
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty"
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks18
+\ex@=\dimen107
+))
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty"
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen108
 )
-(D:\GitHub\MachineLearning1\tex\hw-template.aux)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty"
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count88
+LaTeX Info: Redefining \frac on input line 210.
+\uproot@=\count89
+\leftroot@=\count90
+LaTeX Info: Redefining \overline on input line 306.
+\classnum@=\count91
+\DOTSCASE@=\count92
+LaTeX Info: Redefining \ldots on input line 378.
+LaTeX Info: Redefining \dots on input line 381.
+LaTeX Info: Redefining \cdots on input line 466.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen109
+LaTeX Font Info:    Redeclaring font encoding OML on input line 566.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
+\macc@depth=\count93
+\c@MaxMatrixCols=\count94
+\dotsspace@=\muskip10
+\c@parentequation=\count95
+\dspbrk@lvl=\count96
+\tag@help=\toks19
+\row@=\count97
+\column@=\count98
+\maxfields@=\count99
+\andhelp@=\toks20
+\eqnshift@=\dimen110
+\alignsep@=\dimen111
+\tagshift@=\dimen112
+\tagwidth@=\dimen113
+\totwidth@=\dimen114
+\lineht@=\dimen115
+\@envbody=\toks21
+\multlinegap=\skip47
+\multlinetaggap=\skip48
+\mathdisplay@stack=\toks22
+LaTeX Info: Redefining \[ on input line 2665.
+LaTeX Info: Redefining \] on input line 2666.
+)
+\c@theorem=\count100
+\c@corollary=\count101
+\c@lemma=\count102
+\c@claim=\count103
+\c@fact=\count104
+\c@definition=\count105
+\c@assumption=\count106
+\c@observation=\count107
+\c@example=\count108
+)
+(C:\Users\gen\Documents\GitHub\MachineLearning2\tex\hw-template.aux)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 9.
 LaTeX Font Info:    ... okay on input line 9.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 9.
@@ -117,80 +175,82 @@ LaTeX Font Info:    ... okay on input line 9.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 9.
 LaTeX Font Info:    ... okay on input line 9.
 
-(C:\Users\gnishida\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
+(C:\Users\gen\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count97
-\scratchdimen=\dimen107
-\scratchbox=\box26
-\nofMPsegments=\count98
-\nofMParguments=\count99
-\everyMPshowfont=\toks18
-\MPscratchCnt=\count100
-\MPscratchDim=\dimen108
-\MPnumerator=\count101
-\makeMPintoPDFobject=\count102
-\everyMPtoPDFconversion=\toks19
+\scratchcounter=\count109
+\scratchdimen=\dimen116
+\scratchbox=\box28
+\nofMPsegments=\count110
+\nofMParguments=\count111
+\everyMPshowfont=\toks23
+\MPscratchCnt=\count112
+\MPscratchDim=\dimen117
+\MPnumerator=\count113
+\makeMPintoPDFobject=\count114
+\everyMPtoPDFconversion=\toks24
 )
 Underfull \hbox (badness 10000) detected at line 11
  []
  []
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 20.
+LaTeX Font Info:    Try loading font information for U+msa on input line 24.
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 20.
+LaTeX Font Info:    Try loading font information for U+msb on input line 24.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 22.
+Overfull \hbox (6.26404pt too wide) in alignment at lines 24--27
+ [][][] []
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 54--58
+
+ []
+
+[1
+
+{C:/Users/gen/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 75.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 22.
-
-<figure1.png, id=1, 648.92438pt x 325.96782pt>
-File: figure1.png Graphic file (type png)
- <use figure1.png>
-Package pdftex.def Info: figure1.png used on input line 67.
-(pdftex.def)             Requested size: 369.88582pt x 185.80357pt.
- [1
-
-{C:/Users/gnishida/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2 <D:/G
-itHub/MachineLearning1/tex/figure1.png>] [3] [4] [5]
-<figure2.png, id=29, 1348.28719pt x 232.61906pt>
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 75.
+ [2] [3] [4]
+[5] <figure2.png, id=27, 1348.28719pt x 232.61906pt>
 File: figure2.png Graphic file (type png)
  <use figure2.png>
-Package pdftex.def Info: figure2.png used on input line 216.
+Package pdftex.def Info: figure2.png used on input line 207.
 (pdftex.def)             Requested size: 426.79134pt x 73.63388pt.
- [6 <D:/GitHub/MachineLearning1/tex/figure2.png>]
-(D:\GitHub\MachineLearning1\tex\hw-template.aux) ) 
+ [6 <C:/Users/gen/Documents/GitHub/MachineLearning2/tex/figure2.png>]
+(C:\Users\gen\Documents\GitHub\MachineLearning2\tex\hw-template.aux) ) 
 Here is how much of TeX's memory you used:
- 1457 strings out of 493921
- 19416 string characters out of 3144867
- 80011 words of memory out of 3000000
- 4755 multiletter control sequences out of 15000+200000
+ 2042 strings out of 493921
+ 26145 string characters out of 3144883
+ 87221 words of memory out of 3000000
+ 5325 multiletter control sequences out of 15000+200000
  10195 words of font info for 38 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 36i,9n,24p,1000b,365s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files (x86)/MiKTe
-X 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files (x86)/MiKTeX 
-2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files (x86)/MiKTeX 2.
-9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files (x86)/MiKTeX 2.9/
-fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fon
-ts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/
-type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type
-1/public/amsfonts/cm/cmsl12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/
-public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/pu
-blic/amsfonts/cm/cmsy8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/publi
-c/amsfonts/cm/cmti12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/
-amsfonts/symbols/msbm10.pfb>
-Output written on hw-template.pdf (6 pages, 181170 bytes).
+ 36i,9n,24p,969b,319s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Progr
+am Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program
+ Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program F
+iles (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Fil
+es (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files 
+(x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files (x8
+6)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files (x86)/M
+iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsl12.pfb><C:/Program Files (x86)/MiK
+TeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTe
+X 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files (x86)/MiKTeX 2
+.9/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on hw-template.pdf (6 pages, 152870 bytes).
 PDF statistics:
- 67 PDF objects out of 1000 (max. 8388607)
+ 62 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 6 words of extra memory for PDF output out of 10000 (max. 10000000)
 

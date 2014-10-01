@@ -8,76 +8,67 @@
 
 \begin{document}
 
-\solution{Gen Nishida}{\today}{1}{Fall 2014}
+\solution{Gen Nishida}{\today}{2}{Fall 2014}
 % Fill in the above, for example, as follows:
 % \solution{John Smith}{\today}{1}{Fall 2014}
 
 \pagestyle{myheadings}  % Leave this command alone
 
-\section{Review Questions}
+\section{Questions}
 
 \begin{enumerate}
-\item Assume the probability of getting {\it head} when tossing a coin is $\lambda$.
-\begin{itemize}
-\item What is the probability of getting the first head at the (k+1)-th toss?
-\[
-(1-\lambda)^k \lambda
-\]
-\item What is the expected number of tosses needed to get the first head?\\
-Let $k$ be the number of tosses needed to get the first head. Then the expected number of $k$ is defined by
-\begin{eqnarray}
-E[k]&=&\lambda \times 1 + (1-\lambda) \lambda \times 2 + (1-\lambda)^2 \lambda \times 2 + \cdots\\
-(1-\lambda)E[k]&=&(1-\lambda)\lambda + (1-\lambda)^2 \lambda \times 2 + (1-\lambda)^3 \lambda \times 3 + \cdots
-\end{eqnarray}
-By subtracting (2) from (1), we get
+\item 
+(1) Boolean function
+
+By using conjunctions for every combination of three variables, we can test if at least three variables are active. Therefore, the Boolean function for this is as follows:
 \begin{eqnarray*}
-\lambda E[k] &=& \lambda + (1-\lambda) \lambda + (1-\lambda)^2 \lambda + (1-\lambda)^3 \lambda + \cdots\\
- &=&\lambda \frac{1}{1 - (1 - \lambda)}\\
- &=&1 .
+f=(x_1 \wedge x_2 \wedge x_3) \vee (x_1 \wedge x_2 \wedge x_4) \vee (x_1 \wedge x_2 \wedge x_5) \vee (x_1 \wedge x_3 \wedge x_4) \vee (x_1 \wedge x_3 \wedge x_5) \\
+\vee (x_1 \wedge x_4 \wedge x_5) \vee (x_2 \wedge x_3 \wedge x_4) \vee (x_2 \wedge x_3 \wedge x_5) \vee (x_2 \wedge x_4 \wedge x_5) \vee (x_3 \wedge x_4 \wedge x_5)
 \end{eqnarray*}
-Thus, $E[k]=1 / \lambda $.
-\end{itemize}
 
-\item Let $f(x, y)=3x^2+y^2-xy-11x$
+(2) Linear function
 
-\begin{itemize}
-\item What is the partial derivative of $f$ with respect to $x$ $(\frac{\partial f}{\partial x})$? Find $\frac{\partial f}{\partial y}$ as well.
+Linear function that can achieve the same classification just needs to checke if the sum is more than two.
 \[
-\frac{\partial f}{\partial x}=6x-y-11,\:\:  \frac{\partial f}{\partial y}=2y - x
+f = \begin{cases}
+1 & (x_1 + x_2 + x_3 + x_4 + x_5 \geq 3) \\
+0 & Otherwise
+\end{cases}
 \]
-\item Find a point $(x, y)$ that minimizes $f$.
-\[
-\left\{
-\begin{array}{l}
-6x-y-11=0 \\
-2y-x=0
-\end{array}
-\right.
-\]
-By solving these equations, we get $(x, y)=(2, 1)$.
-\end{itemize}
+
+
+\item What is the size of $CON_B$?
+
+For every variable, there are two cases, used in the conjunctions or not used. Thus, the size of $CON_B$ is $2^n$. 
+
+\item What is the size of $CON_L$?
+
+For every pair of $f_b^{(i)}$ and $f_b^{(j)}$ $(i \neq j)$ in $CON_B$, $\exists x, f_b^{(i)} \neq f_b^{(j)}$. Thus, ths size of $CON_L$ has to be larger than the size of $CON_B$ to make it consistent with $CON_B$. However, 
+
+\item Mistake bound
+
+Mistake bound is the maximum possible number of mistakes made by the online learning algorithms, which is also used to evaluate the performance of the convergence of the algorithms. 
+
+\item mistake bound algorithm
+
+1) initialize : $w_i = 1$ \\
+2) if no mistake do nothing \\
+3) else \\
+4)    for all in-active variables, remove $x_i$ from the conjunctions \\ 
+
+For every mistake, we remove at least one unnecessary variable from the conjunctions. Since we have at least one variable in the conjunctions, the total number of mistakes is at most $n-1$, which is a polynomial in $n$. Thus, this  is a mistake bound algorithm.
 
 \item 
-\begin{itemize}
-\item Assume that $\omega \in R^n$ and $b$ is a scalar. A hyperplane in $\mathbb{R}^n$ is the set $\{x : x\in \mathbb{R}^n, \omega^Tx+b=0\}$. For $n=2$ and $n=3$, draw on paper an example of a hyperplane.\\
-The hyperplane has it normal vector $\omega$, and it is away from the origin by $-b/\|\omega\|$. The example of a hyperplane for $n=2$ and $n=3$ is shown in Figure \ref{fig:one}.
 
-\begin{figure}[hbtp]
-\centering
-\includegraphics[width=130mm]{figure1.png}
-\caption{The example of a hyperplane}
-\label{fig:one}
-\end{figure}
+(1) Will both classifiers converge?
 
+(2) What will be the training error of each one of the classifiers?
 
-\item Assume we have two parallel hyperplanes: $\{x: x\in \mathbb{R}^n, \omega^Tx+b_1=0\}$ and $\{x: x\in \mathbb{R}^n, \omega^Tx+b_2=0\}$. What is the distance between these two hyperplanes?
-\[
-\left|\frac{-b_1}{\|\omega\|}-\frac{-b_2}{\|\omega\|}\right|=\frac{|b_1-b_2|}{\|\omega\|}
-\]
-\end{itemize}
+\item kernel function $K(x, y)$
+
 \end{enumerate}
 
-\section{Basic Concepts}
+\section{Programming Assignment}
 \begin{enumerate}
 \item Define in one sentence: (1) training set, (2) test set, (3) validation set.
 \begin{itemize}
