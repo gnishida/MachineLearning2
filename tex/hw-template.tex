@@ -51,12 +51,21 @@ Mistake bound is the maximum possible number of mistakes made by the online lear
 
 \item mistake bound algorithm
 
-1) initialize : $w_i = 1$ \\
+1) initialize the hypothesis: $f = x_1 \wedge \neg x_1 \wedge x_2 \wedge \neg x_2 \wedge \cdots \wedge x_n \wedge \neg x_n$ \\
 2) if no mistake do nothing \\
 3) else \\
 4)    for all in-active variables, remove $x_i$ from the conjunctions \\ 
 
-For every mistake, we remove at least one unnecessary variable from the conjunctions. Since we have at least one variable in the conjunctions, the total number of mistakes is at most $n-1$, which is a polynomial in $n$. Thus, this  is a mistake bound algorithm.
+The example of the learning process is shown in Figure \ref{fig:learning_process}. For instance, when the first mistake is made for an example $x=(1, 0, 0)$, the variables $\neg x_1$, $ x_2$, and $x_3$ are in-active, and these variables are removed from the conjunctions, which results in the updated hypothesis $f = x_1 \wedge \neg x_2 \wedge \neg x_3$. 
+
+For every mistake, we remove at least one unnecessary variable from the conjunctions. Since we have at least one variable in the conjunctions, the total number of mistakes is at most $2n-1$. Thus, this is a mistake bound algorithm.
+
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width=110mm]{figure1.jpg}
+\caption{The example of a learning process}
+\label{fig:learning_process}
+\end{figure}
 
 \item 
 
