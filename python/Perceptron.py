@@ -1,4 +1,5 @@
 import numpy as np
+import pylab as plt
 import math
 
 
@@ -54,11 +55,16 @@ def report(examples, w, vars):
 				false_pos += 1
 
 	accuracy = float(correct) / float(correct + incorrect)
-	precision = float(true_pos) / float(true_pos + false_pos)
-	recall = float(true_pos) / float(true_pos + false_neg)
-	F1 = 2 * precision * recall / (precision + recall)
+	precision = 0
+	recall = 0
+	F1 = 0
+	if true_pos + false_pos > 0:
+		precision = float(true_pos) / float(true_pos + false_pos)
+		recall = float(true_pos) / float(true_pos + false_neg)
+		if precision + recall > 0:
+			F1 = 2 * precision * recall / (precision + recall)
 
-	print("accuracy: " + str(accuracy) + " / precision: " + str(precision) + " / recall: " + str(recall) + " / F1: " + str(F1))
+	#print("accuracy: " + str(accuracy) + " / precision: " + str(precision) + " / recall: " + str(recall) + " / F1: " + str(F1))
 	return [accuracy, precision, recall, F1]
 
 # Perceptron
@@ -72,7 +78,7 @@ def Perceptron(maxIterations, featureSet):
 	for attr_index, attr_type in attr_types.iteritems():
 		if attr_type == "C": continue
 
-		print(attr_index)
+		#print(attr_index)
 
 		attr_values[attr_index] = []
 
@@ -81,8 +87,8 @@ def Perceptron(maxIterations, featureSet):
 			if example.row[attr_index] not in attr_values[attr_index]:
 				attr_values[attr_index].append(example.row[attr_index])
 
-		for val in attr_values[attr_index]:
-			print("  " + val)
+		#for val in attr_values[attr_index]:
+		#	print("  " + val)
 
 	# setup feature representation
 	vars = []
@@ -111,11 +117,11 @@ def Perceptron(maxIterations, featureSet):
 						list.append([attr_indices[j], val2])
 						vars.append(list)
 
-	print("============= variables =======")
-	for list in vars:
-		for combination in list:
-			print(str(combination[0]) + ":" + combination[1]),
-		print
+	#print("============= variables =======")
+	#for list in vars:
+	#	for combination in list:
+	#		print(str(combination[0]) + ":" + combination[1]),
+	#	print
 
 
 	# initialize the weight vector
@@ -152,19 +158,19 @@ def Perceptron(maxIterations, featureSet):
 			w += r * y * x;
 			#print(w)
 
-	print("============== final weight ============")
-	print(w)
-	print("correct: " + str(correct) + " / incorrect: " + str(incorrect))
+	#print("============== final weight ============")
+	#print(w)
+	#print("correct: " + str(correct) + " / incorrect: " + str(incorrect))
 
 	ret = []
-	print("============== test on the training data ========")
+	#print("============== test on the training data ========")
 	ret.append(report(examples, w, vars))
 
-	print("============== test on the validation data ========")
+	#print("============== test on the validation data ========")
 	examples = readData("validation.txt")
 	ret.append(report(examples, w, vars))
 
-	print("============== test on the test data ========")
+	#print("============== test on the test data ========")
 	examples = readData("test.txt")
 	ret.append(report(examples, w, vars))
 
@@ -186,6 +192,43 @@ def readData(filename):
 	return examples
 
 if __name__ == '__main__':
+	nExamples = []
+	list_t = []
+	list_v = []
+	list_ts = []
+	max_accuracy = 0
+	max_maxIterations = 0
+
 	for maxIterations in xrange(10, 491):
+		print(maxIterations)
 		results = Perceptron(maxIterations, 1)
+		nExamples.append(maxIterations)
+		list_t.append(results[0][0])
+		list_v.append(results[1][0])
+		list_ts.append(results[2][0])
+
+		if results[1][0] > max_accuracy:
+			max_accuracy = results[1][0]
+			max_maxIterations = maxIterations
+			max_results = results
+
+	# show the best
+	print("maxIterations: " + str(max_maxIterations))
+	print("=== Training data ===")
+	print("accuracy: " + str(max_results[0][0]) + " / precision: " +  str(max_results[0][1]) + " / recall: " + str(max_results[0][2]))
+	print("=== Validation data ===")
+	print("accuracy: " + str(max_results[1][0]) + " / precision: " +  str(max_results[1][1]) + " / recall: " + str(max_results[1][2]))
+	print("=== Test data ===")
+	print("accuracy: " + str(max_results[2][0]) + " / precision: " +  str(max_results[2][1]) + " / recall: " + str(max_results[2][2]))
+
+	# show the accuracy graph
+	plt.plot(nExamples, list_t, "-", label="training")
+	plt.plot(nExamples, list_v, "-", label="validation")
+	plt.plot(nExamples, list_ts, "-", label="test")
+	plt.title("Accuracy")
+	plt.xlim(0, 500)
+	plt.ylim(0, 1.0)
+	plt.legend(loc='upper left')
+	plt.show()
+
 
