@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.9.5)  1 OCT 2014 20:33
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.9.10)  2 OCT 2014 11:23
 entering extended mode
-**hw-template.tex
-(C:\Users\gen\Documents\GitHub\MachineLearning2\tex\hw-template.tex
+**D:/GitHub/MachineLearning2/tex/hw-template.tex
+(D:/GitHub/MachineLearning2/tex/hw-template.tex
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
 abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
@@ -13,7 +13,7 @@ german-x-2013-05-26, nynorsk, oriya, panjabi, pinyin, polish, portuguese, roman
 ian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swissgerm
 an, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, usengl
 ishmax, welsh, loaded.
-(C:\Users\gen\Documents\GitHub\MachineLearning2\tex\mlClassDefs.tex
+(D:\GitHub\MachineLearning2\tex\mlClassDefs.tex
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\article.cls"
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\size12.clo"
@@ -71,7 +71,7 @@ Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \Gin@req@height=\dimen103
 \Gin@req@width=\dimen104
 )
-(C:\Users\gen\AppData\Roaming\MiKTeX\2.9\tex\latex\colortbl\colortbl.sty
+(C:\Users\gnishida\AppData\Roaming\MiKTeX\2.9\tex\latex\colortbl\colortbl.sty
 Package: colortbl 2012/02/13 v1.0a Color table columns (DPC)
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\array.sty"
@@ -151,17 +151,56 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
 LaTeX Info: Redefining \[ on input line 2665.
 LaTeX Info: Redefining \] on input line 2666.
 )
-\c@theorem=\count100
-\c@corollary=\count101
-\c@lemma=\count102
-\c@claim=\count103
-\c@fact=\count104
-\c@definition=\count105
-\c@assumption=\count106
-\c@observation=\count107
-\c@example=\count108
+(C:\Users\gnishida\AppData\Roaming\MiKTeX\2.9\tex\latex\algorithms\algorithm.st
+y
+Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
+nment
+ ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\float\float.sty"
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count100
+\float@exts=\toks23
+\float@box=\box28
+\@float@everytoks=\toks24
+\@floatcapt=\box29
 )
-(C:\Users\gen\Documents\GitHub\MachineLearning2\tex\hw-template.aux)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\ifthen.sty"
+Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\@float@every@algorithm=\toks25
+\c@algorithm=\count101
+)
+(C:\Users\gnishida\AppData\Roaming\MiKTeX\2.9\tex\latex\algorithmicx\algpseudoc
+ode.sty
+Package: algpseudocode 
+
+(C:\Users\gnishida\AppData\Roaming\MiKTeX\2.9\tex\latex\algorithmicx\algorithmi
+cx.sty
+Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
+
+Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
+\c@ALG@line=\count102
+\c@ALG@rem=\count103
+\c@ALG@nested=\count104
+\ALG@tlm=\skip49
+\ALG@thistlm=\skip50
+\c@ALG@Lnr=\count105
+\c@ALG@blocknr=\count106
+\c@ALG@storecount=\count107
+\c@ALG@tmpcounter=\count108
+\ALG@tmplength=\skip51
+)
+Document Style - pseudocode environments for use with the `algorithmicx' style
+)
+\c@theorem=\count109
+\c@corollary=\count110
+\c@lemma=\count111
+\c@claim=\count112
+\c@fact=\count113
+\c@definition=\count114
+\c@assumption=\count115
+\c@observation=\count116
+\c@example=\count117
+) (D:\GitHub\MachineLearning2\tex\hw-template.aux)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 9.
 LaTeX Font Info:    ... okay on input line 9.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 9.
@@ -175,73 +214,71 @@ LaTeX Font Info:    ... okay on input line 9.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 9.
 LaTeX Font Info:    ... okay on input line 9.
 
-(C:\Users\gen\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
+(C:\Users\gnishida\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count109
+\scratchcounter=\count118
 \scratchdimen=\dimen116
-\scratchbox=\box28
-\nofMPsegments=\count110
-\nofMParguments=\count111
-\everyMPshowfont=\toks23
-\MPscratchCnt=\count112
+\scratchbox=\box30
+\nofMPsegments=\count119
+\nofMParguments=\count120
+\everyMPshowfont=\toks26
+\MPscratchCnt=\count121
 \MPscratchDim=\dimen117
-\MPnumerator=\count113
-\makeMPintoPDFobject=\count114
-\everyMPtoPDFconversion=\toks24
+\MPnumerator=\count122
+\makeMPintoPDFobject=\count123
+\everyMPtoPDFconversion=\toks27
 )
 Underfull \hbox (badness 10000) detected at line 11
  []
  []
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 24.
+LaTeX Font Info:    Try loading font information for U+msa on input line 20.
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 24.
+LaTeX Font Info:    Try loading font information for U+msb on input line 20.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Overfull \hbox (6.26404pt too wide) in alignment at lines 24--27
+Overfull \hbox (6.26404pt too wide) in alignment at lines 25--28
  [][][] []
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 54--58
-
  []
 
 [1
 
-{C:/Users/gen/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-<figure1.jpg, id=13, 612.78937pt x 414.04688pt>
-File: figure1.jpg Graphic file (type jpg)
- <use figure1.jpg>
-Package pdftex.def Info: figure1.jpg used on input line 65.
-(pdftex.def)             Requested size: 312.9803pt x 211.47067pt.
- [2 <C:/Users/gen/Documents/GitHub/MachineLearning2/tex/figure1.jpg>] [3]
-(C:\Users\gen\Documents\GitHub\MachineLearning2\tex\hw-template.aux) ) 
+{C:/Users/gnishida/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+<learning_process.jpg, id=13, 743.02594pt x 476.53032pt>
+File: learning_process.jpg Graphic file (type jpg)
+
+<use learning_process.jpg>
+Package pdftex.def Info: learning_process.jpg used on input line 79.
+(pdftex.def)             Requested size: 284.52756pt x 182.47948pt.
+ [2 <D:/GitHub/MachineLearning2/tex/learning_process.jpg>] [3] (D:\GitHub\Machi
+neLearning2\tex\hw-template.aux) ) 
 Here is how much of TeX's memory you used:
- 2022 strings out of 493921
- 25821 string characters out of 3144883
- 85210 words of memory out of 3000000
- 5308 multiletter control sequences out of 15000+200000
- 10195 words of font info for 38 fonts, out of 3000000 for 9000
+ 2644 strings out of 493921
+ 34758 string characters out of 3144867
+ 96735 words of memory out of 3000000
+ 5911 multiletter control sequences out of 15000+200000
+ 10496 words of font info for 39 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 36i,7n,24p,395b,307s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Progr
-am Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program
- Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program F
-iles (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Fil
-es (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files 
-(x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files (x8
-6)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files (x86)/M
-iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsl12.pfb><C:/Program Files (x86)/MiK
-TeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTe
-X 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on hw-template.pdf (3 pages, 180743 bytes).
+ 36i,7n,24p,460b,361s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Program Files (x86)/MiKTeX 2.9/fonts/type
+1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/
+public/amsfonts/cm/cmcsc10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/p
+ublic/amsfonts/cm/cmex10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/pub
+lic/amsfonts/cm/cmmi12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/publi
+c/amsfonts/cm/cmmi8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/a
+msfonts/cm/cmr10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsf
+onts/cm/cmr12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfont
+s/cm/cmr8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
+/cmsl12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/c
+msy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmt
+i12.pfb>
+Output written on hw-template.pdf (3 pages, 249099 bytes).
 PDF statistics:
- 49 PDF objects out of 1000 (max. 8388607)
+ 57 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 

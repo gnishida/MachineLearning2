@@ -17,10 +17,11 @@
 \section{Questions}
 
 \begin{enumerate}
-\item 
+\item Given $n$ boolean variables $(x_1,\cdots,x_n)$, we define our target classification function $f(\cdot)$ as $f(\cdot)=1 if at least 3 variables are active$. For $n=5$ show how this function can be represented as (1) Boolean function (2) Linear function.
+
 (1) Boolean function
 
-By using conjunctions for every combination of three variables, we can test if at least three variables are active. Therefore, the Boolean function for this is as follows:
+By using conjunctions for every combination of three variables, we can test if at least three variables are active. Therefore, the Boolean function for this can be represented as follows:
 \begin{eqnarray*}
 f=(x_1 \wedge x_2 \wedge x_3) \vee (x_1 \wedge x_2 \wedge x_4) \vee (x_1 \wedge x_2 \wedge x_5) \vee (x_1 \wedge x_3 \wedge x_4) \vee (x_1 \wedge x_3 \wedge x_5) \\
 \vee (x_1 \wedge x_4 \wedge x_5) \vee (x_2 \wedge x_3 \wedge x_4) \vee (x_2 \wedge x_3 \wedge x_5) \vee (x_2 \wedge x_4 \wedge x_5) \vee (x_3 \wedge x_4 \wedge x_5)
@@ -28,7 +29,7 @@ f=(x_1 \wedge x_2 \wedge x_3) \vee (x_1 \wedge x_2 \wedge x_4) \vee (x_1 \wedge 
 
 (2) Linear function
 
-Linear function that can achieve the same classification just needs to checke if the sum is more than two.
+Linear function that can achieve the same classification just needs to check whether the sum is more than or equals to three. Thus,
 \[
 f = \begin{cases}
 1 & (x_1 + x_2 + x_3 + x_4 + x_5 \geq 3) \\
@@ -37,37 +38,50 @@ f = \begin{cases}
 \]
 
 
-\item What is the size of $CON_B$?
+\item Let $CON_B$ be the set of all different monotone conjunctions defined over $n$ boolean variables. What is the size of $CON_B$?
 
-For every variable, there are two cases, used in the conjunctions or not used. Thus, the size of $CON_B$ is $2^n$. 
+For every variable, there are two cases, active or not active. Thus, the size of $CON_B$ is $2^n$. 
 
-\item What is the size of $CON_L$?
+\item Let $CON_L$ be the set of all linear functions defined over $n$ boolean variables that are consistent with the functions in $CON_B$. What is the size of $CON_L$?
 
-For every pair of $f_b^{(i)}$ and $f_b^{(j)}$ $(i \neq j)$ in $CON_B$, $\exists x, f_b^{(i)} \neq f_b^{(j)}$. Thus, ths size of $CON_L$ has to be larger than the size of $CON_B$ to make it consistent with $CON_B$. However, 
+For every pair of $f_b^{(i)}$ and $f_b^{(j)}$ $(i \neq j)$ in $CON_B$, $\exists x, f_b^{(i)} \neq f_b^{(j)}$. Thus, the size of $CON_L$ has to be larger than the size of $CON_B$ to make it consistent with $CON_B$. However, 
 
-\item Mistake bound
+\item Define in one sentence: Mistake bound.
 
-Mistake bound is the maximum possible number of mistakes made by the online learning algorithms, which is also used to evaluate the performance of the convergence of the algorithms. 
+Mistake bound is the maximum number of mistakes that can be made by an online learning algorithm, which is also used to evaluate the performance of the convergence of the algorithm. 
 
-\item mistake bound algorithm
+\item Suggest a mistake bound algorithm for learning Boolean conjunctions. Show that your algorithm is a mistake bound algorithm for Boolean conjunctions.
 
-1) initialize the hypothesis: $f = x_1 \wedge \neg x_1 \wedge x_2 \wedge \neg x_2 \wedge \cdots \wedge x_n \wedge \neg x_n$ \\
-2) if no mistake do nothing \\
-3) else \\
-4)    for all in-active variables, remove $x_i$ from the conjunctions \\ 
+Algorithm 1 shows the mistake bound algorithm for learning Boolean conjunctions.
 
-The example of the learning process is shown in Figure \ref{fig:learning_process}. For instance, when the first mistake is made for an example $x=(1, 0, 0)$, the variables $\neg x_1$, $ x_2$, and $x_3$ are in-active, and these variables are removed from the conjunctions, which results in the updated hypothesis $f = x_1 \wedge \neg x_2 \wedge \neg x_3$. 
+\begin{algorithm}
+\caption{Mistake bound algorithm for learnign Boolean conjunctions}\label{euclid}
+\begin{algorithmic}[1]
+\Procedure{LearnBooleanConjunctions()}{}
+\State Initialize the hypothesis: $h =  x_1 \wedge \neg x_1 \wedge x_2 \wedge \neg x_2 \wedge \cdots \wedge x_n \wedge \neg x_n$
+\ForAll{examples $x \in X$}
+\If{$h(x) \neq y$}
+\State eliminate literals that are not active (0) \hspace*{\fill} (See some examples in Figure \ref{fig:learning_process})
+\EndIf
+\EndFor
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
 
-For every mistake, we remove at least one unnecessary variable from the conjunctions. Since we have at least one variable in the conjunctions, the total number of mistakes is at most $2n-1$. Thus, this is a mistake bound algorithm.
+
+
+An example of the learning process is shown in Figure \ref{fig:learning_process}. When the first mistake is made for an training data $x=(1, 0, 0)$, the literals $\neg x_1$, $ x_2$, and $x_3$ are not active, and these literals are removed from the conjunctions, which results in the updated hypothesis $h = x_1 \wedge \neg x_2 \wedge \neg x_3$. 
+
+For every mistake, we remove at least one unnecessary literal from the conjunctions. Since we have $2n$ literals at the beginning, and at least one literal in the conjunctions will be remained in the end, the total number of mistakes is at most $2n-1$, which is $O(n)$. Thus, this is a mistake bound algorithm.
 
 \begin{figure}[hbtp]
 \centering
-\includegraphics[width=110mm]{figure1.jpg}
-\caption{The example of a learning process}
+\includegraphics[width=100mm]{learning_process.jpg}
+\caption{An example of a learning process}
 \label{fig:learning_process}
 \end{figure}
 
-\item 
+\item Given a linearly separable dataset consisting of 1000 positive examples and 1000 negative examples, we train two linear classifier using the perceptron algorithm. We provide the first classifier with a sorted dataset in which all the positive examples appear first, and then the negative examples appear. The second classifier is trained by randomly selecting examples at each training iteration.
 
 (1) Will both classifiers converge?
 
@@ -77,11 +91,12 @@ Yes. For the linearly separable dataset, it is proved that the perceptron algori
 
 When both classifiers converge, no more mistakes will be made. In other words, the training error will be zero for both classifiers.
 
-\item kernel function $K(x, y)$
+\item We showed in class that using the Boolean kernel function $K(x, y)=2^{same(x,y)}$ we can express all conjunctions over the attributes of $x$ and $y$ (with both the positive and negative literals). This representation can be too expressive. Suggest a kernel function $K(x, y)$ that can express all conjunctions of size at most $k$.
 
-$x$ and $y$ have the $same(x,y)$ values in common in their variables. Since we have at most $k$ variables in each conjunction, the number of all the combination of the same variables of size at most $k$ will be the kernel function. Thus,
+Every active conjunctions of size at most $k$ is a combination of positive or negative literals $l_i \in L$ that have the same value in $x$ and $y$ (i.e. $|L|=same(x,y)$). Then, counting the active conjunctions of size at most $k$ is reduced to selecting a set of literals of size at most $k$ from $L$. Thus,
+
 \[
-K(x, y)={}_{same(x,y)} C _1 + {}_{same(x,y)} C _2 + \cdots + {}_{same(x,y)} C _k
+K(x, y)={}_{same(x,y)} C _0 + {}_{same(x,y)} C _1 + {}_{same(x,y)} C _2 + \cdots + {}_{same(x,y)} C _k
 \]
 
 \end{enumerate}
