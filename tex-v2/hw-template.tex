@@ -106,17 +106,69 @@ K(x, y)={}_{same(x,y)} C _0 + {}_{same(x,y)} C _1 + {}_{same(x,y)} C _2 + \cdots
 \end{enumerate}
 
 \section{Programming Assignment}
-\begin{enumerate}
-\item Feature Representation
-
-\item Implementation
 
 
-\item Experiments
+The learning results for $featrueSet=1$ is shown in Figure \ref{fig:F1_curve_1}.  The best F1 on the validation data was achieved when $maxIterations=438$. Since F1 score is a good gauge to measure the performance, I picked $maxIterations = 438$ that achieves the highest F1 score, and evaluate the performance (Table 1).
 
+\begin{table}[htb]
+\centering
+  \begin{tabular}{|c|r|r|r|r|} \hline
+    data & accuracy & precision & recall & F1 \\ \hline
+    Training data & 0.87 & 0.94 & 0.75 & 0.83 \\ \hline
+    Validation data & 0.93 & 0.92 & 0.92 & 0.92 \\ \hline
+    Test data & 0.56 & 0.56 & 0.53 & 0.54 \\ \hline
+  \end{tabular}
+  \caption{The performace for $featureSet = 1$ and $maxIterations = 438$}
+\end{table}
 
-\end{enumerate}
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width=100mm]{F1_curve_1}
+\caption{F1 evolution over the number of examples for $featureSet=1$}
+\label{fig:F1_curve_1}
+\end{figure}
 
+The learning results for $featrueSet=2$ is shown in Figure \ref{fig:F1_curve_2}. The best F1 on the validation data was achieved when $maxIterations=432$, and for the same reason, I picked $maxIterations = 432$ that achieves the highest F1 score, and evaluate the performance (Table 2).
+
+\begin{table}[htb]
+\centering
+  \begin{tabular}{|c|r|r|r|r|} \hline
+    data & accuracy & precision & recall & F1 \\ \hline
+    Training data & 0.90 & 0.91 & 0.85 & 0.88 \\ \hline
+    Validation data & 0.96 & 0.93 & 1.0 & 0.96 \\ \hline
+    Test data & 0.57 & 0.55 & 0.69 & 0.61 \\ \hline
+  \end{tabular}
+  \caption{The performace for $featureSet = 2$ and $maxIterations = 432$}
+\end{table}
+
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width=100mm]{F1_curve_2}
+\caption{F1 evolution over the number of examples for $featureSet=2$}
+\label{fig:F1_curve_2}
+\end{figure}
+
+The learning results for $featrueSet=3$ is shown in Figure \ref{fig:F1_curve_3}. The best F1 on the validation data was achieved when $maxIterations=425$, and its performance is shown in Table 3.
+
+\begin{table}[htb]
+\centering
+  \begin{tabular}{|c|r|r|r|r|} \hline
+    data & accuracy & precision & recall & F1 \\ \hline
+    Training data & 0.92 & 0.89 & 0.94 & 0.91 \\ \hline
+    Validation data & 0.96 & 0.93 & 1.0 & 0.96 \\ \hline
+    Test data & 0.52 & 0.50 & 0.81 & 0.62 \\ \hline
+  \end{tabular}
+  \caption{The performace for $featureSet = 3$ and $maxIterations = 425$}
+\end{table}
+
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width=100mm]{F1_curve_3}
+\caption{F1 evolution over the number of examples for $featureSet=3$}
+\label{fig:F1_curve_3}
+\end{figure}
+
+The results show the significant improvement in the performance by using more complex feature set (i.e. $featureSet = 2$ or $featureSet = 3$). Notice that the performance on the test data is also improved by using complex feature set without overfitting. This indicates that the linear function helps to keep the hypothesis from being overfitting even if we use a comples feature set.
 
 \end{document}
 

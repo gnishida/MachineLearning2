@@ -210,7 +210,7 @@ if __name__ == '__main__':
 	for maxIterations in xrange(10, 491):
 	#for maxIterations in xrange(100, 101):
 		print(maxIterations)
-		(results, w) = Perceptron(maxIterations, 2)
+		(results, w) = Perceptron(maxIterations, 3)
 		#print("final w: " + str(w))
 		nExamples.append(maxIterations)
 		list_t.append(results[0][3])
@@ -240,6 +240,6 @@ if __name__ == '__main__':
 	plt.xlim(0, 500)
 	plt.ylim(0, 1.0)
 	plt.legend(loc='upper left')
-	plt.show()
-
+	#plt.show()
+	plt.savefig("result.eps")
 
