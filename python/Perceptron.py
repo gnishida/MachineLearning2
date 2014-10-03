@@ -28,6 +28,10 @@ def _x(vars, row):
 
 	return x
 
+def _sgn(x):
+	if np.sign(x) > 0: return 1
+	else: return -1
+
 # Report the accuracy, precision, recall, and F1 for given examples and weight vector
 def report(examples, w, vars):
 	correct = 0
@@ -42,7 +46,7 @@ def report(examples, w, vars):
 		if examples[i].label == "+": y = 1
 		else: y = -1
 
-		h = np.sign(np.dot(w, x))
+		h = _sgn(np.dot(w, x))
 		if h == y:
 			correct += 1
 			if y == 1:
@@ -60,9 +64,10 @@ def report(examples, w, vars):
 	F1 = 0
 	if true_pos + false_pos > 0:
 		precision = float(true_pos) / float(true_pos + false_pos)
+	if true_pos + false_neg > 0:
 		recall = float(true_pos) / float(true_pos + false_neg)
-		if precision + recall > 0:
-			F1 = 2 * precision * recall / (precision + recall)
+	if precision + recall > 0:
+		F1 = 2 * precision * recall / (precision + recall)
 
 	#print("accuracy: " + str(accuracy) + " / precision: " + str(precision) + " / recall: " + str(recall) + " / F1: " + str(F1))
 	return [accuracy, precision, recall, F1]
@@ -70,6 +75,7 @@ def report(examples, w, vars):
 # Perceptron
 def Perceptron(maxIterations, featureSet):
 	attr_types = {0: "B", 1: "C", 2: "C", 3: "B", 4: "B", 5: "B", 6: "B", 7: "C", 8: "B", 9: "B", 10: "C", 11: "B", 12: "B", 13: "C", 14: "C"}
+	#attr_types = {0: "B", 1: "B"}
 
 	examples = readData("train.txt")
 
@@ -126,10 +132,10 @@ def Perceptron(maxIterations, featureSet):
 
 	# initialize the weight vector
 	w = np.zeros(len(vars) + 1)
-	#print(w)
+	#print("w: " + str(w))
 
 	# learning rate
-	r = 0.001
+	r = 0.01
 
 	correct = 0
 	incorrect = 0
@@ -139,14 +145,14 @@ def Perceptron(maxIterations, featureSet):
 
 		# compute feature vector
 		x = _x(vars, examples[i].row)
-		#print(x)
 
 		# get the true label
 		if examples[i].label == "+": y = 1
 		else: y = -1
 
 		# predict the label
-		h = np.sign(np.dot(w, x))
+		h = _sgn(np.dot(w, x))
+		#print("x: " + str(x) + " h: " + str(h) + " y: " + str(y))
 		if h == y:
 			#print("OK")
 			correct += 1
@@ -156,7 +162,7 @@ def Perceptron(maxIterations, featureSet):
 			incorrect += 1
 			# update the weight vector
 			w += r * y * x;
-			#print(w)
+			#print("w: " + str(w))
 
 	#print("============== final weight ============")
 	#print(w)
@@ -174,7 +180,7 @@ def Perceptron(maxIterations, featureSet):
 	examples = readData("test.txt")
 	ret.append(report(examples, w, vars))
 
-	return ret
+	return (ret, w)
 
 #readfile:
 #   Input: filename
@@ -183,6 +189,7 @@ def readData(filename):
 	f = open(filename).read()
 	examples = []
 	for line in f.split('\r'):
+	#for line in f.split('\n'):
 		if line == "": continue
 		row = line.split('\t')
 		label = row[len(row) - 1]
@@ -196,36 +203,40 @@ if __name__ == '__main__':
 	list_t = []
 	list_v = []
 	list_ts = []
-	max_accuracy = 0
+	max_F1 = -1
 	max_maxIterations = 0
+	max_results = []
 
 	for maxIterations in xrange(10, 491):
+	#for maxIterations in xrange(100, 101):
 		print(maxIterations)
-		results = Perceptron(maxIterations, 1)
+		(results, w) = Perceptron(maxIterations, 2)
+		#print("final w: " + str(w))
 		nExamples.append(maxIterations)
-		list_t.append(results[0][0])
-		list_v.append(results[1][0])
-		list_ts.append(results[2][0])
+		list_t.append(results[0][3])
+		list_v.append(results[1][3])
+		list_ts.append(results[2][3])
 
-		if results[1][0] > max_accuracy:
-			max_accuracy = results[1][0]
+		# keep the best F1
+		if results[1][3] > max_F1:
+			max_F1 = results[1][3]
 			max_maxIterations = maxIterations
 			max_results = results
 
 	# show the best
-	print("maxIterations: " + str(max_maxIterations))
+	print("maxIterations: " + str(max_maxIterations) + " (F1: " + str(max_F1) + ")")
 	print("=== Training data ===")
-	print("accuracy: " + str(max_results[0][0]) + " / precision: " +  str(max_results[0][1]) + " / recall: " + str(max_results[0][2]))
+	print("accuracy: " + str(max_results[0][0]) + " / precision: " +  str(max_results[0][1]) + " / recall: " + str(max_results[0][2]) + " / F1: " + str(max_results[0][3]))
 	print("=== Validation data ===")
-	print("accuracy: " + str(max_results[1][0]) + " / precision: " +  str(max_results[1][1]) + " / recall: " + str(max_results[1][2]))
+	print("accuracy: " + str(max_results[1][0]) + " / precision: " +  str(max_results[1][1]) + " / recall: " + str(max_results[1][2]) + " / F1: " + str(max_results[1][3]))
 	print("=== Test data ===")
-	print("accuracy: " + str(max_results[2][0]) + " / precision: " +  str(max_results[2][1]) + " / recall: " + str(max_results[2][2]))
+	print("accuracy: " + str(max_results[2][0]) + " / precision: " +  str(max_results[2][1]) + " / recall: " + str(max_results[2][2]) + " / F1: " + str(max_results[2][3]))
 
 	# show the accuracy graph
 	plt.plot(nExamples, list_t, "-", label="training")
 	plt.plot(nExamples, list_v, "-", label="validation")
 	plt.plot(nExamples, list_ts, "-", label="test")
-	plt.title("Accuracy")
+	plt.title("F1")
 	plt.xlim(0, 500)
 	plt.ylim(0, 1.0)
 	plt.legend(loc='upper left')
