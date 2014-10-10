@@ -338,7 +338,7 @@ def drawLearningCurve(startMaxIterations, endMaxIterations, featureSet, saveFile
 	plt.title("Learning Curve")
 	plt.xlim(0, endMaxIterations)
 	plt.ylim(0, 1.0)
-	plt.legend(loc='upper left')
+	plt.legend(loc='lower left')
 
 	if (saveFile):
 		plt.savefig("result.eps")
@@ -353,5 +353,5 @@ if __name__ == '__main__':
 	#(results, w) = Perceptron(1, 2)
 	#print(results)
 
-	drawLearningCurve(1, 7, 2, True)
+	drawLearningCurve(1, 10, 1, True)
 

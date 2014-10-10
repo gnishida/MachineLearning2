@@ -107,7 +107,9 @@ K(x, y)={}_{same(x,y)} C _0 + {}_{same(x,y)} C _1 + {}_{same(x,y)} C _2 + \cdots
 
 \section{Programming Assignment}
 
-I used 0.01 as the learning rate for my implementation. The learning curve in terms of the accuracy for $featrueSet=1$ is shown in Figure \ref{fig:learning_curve_1}.  The best accuracy on the validation data was achieved when $maxIterations=3$, so I picked $maxIterations = 3$ to evaluate the performance on the data (Table 1). It might be better to use F1-score to choose the best $maxIterations$, and I believe that it depends on the applications.
+Regarding the continous attributes, I used thresholds as disscussed in class. Also, I ignored the examples which contain missing values during the learning. Finally, I used 0.01 as the learning rate for my implementation. 
+
+I ran my Perceptron algorithm with different $maxIterations$ from 1 to 7 in order to find the best $maxIterations$ which yields the best performance on the validation data. The learning curve in terms of the accuracy for $featrueSet=1$ is shown in Figure \ref{fig:learning_curve_1}.  The best accuracy on the validation data was achieved when $maxIterations=3$, so I chose $maxIterations = 3$ to evaluate the performance on the data (Table 1). It might be better to use F1-score to choose the best $maxIterations$, and I believe that it depends on the applications.
 
 \begin{table}[htb]
 \centering
@@ -117,55 +119,57 @@ I used 0.01 as the learning rate for my implementation. The learning curve in te
     Validation data & 0.969 & 0.931 & 1.0 & 0.964 \\ \hline
     Test data & 0.529 & 0.516 & 0.696 & 0.593 \\ \hline
   \end{tabular}
-  \caption{The performace for $featureSet = 1$ and $maxIterations = 3$}
+  \caption{The performace result of $featureSet = 1$ when $maxIterations = 3$ is chosen.}
 \end{table}
 
 \begin{figure}[hbtp]
 \centering
-\includegraphics[width=100mm]{learning_curve_1}
+\includegraphics[width=130mm]{learning_curve_1}
 \caption{The performance evolution over the number of iterations for $featureSet=1$}
 \label{fig:learning_curve_1}
 \end{figure}
 
-In the similar manner, I experimented the learning curves for $featrueSet=2$ and $featureSet=3$, and the results are shown in Figures \ref{fig:learning_curve_2} and \ref{fig:learning_curve_3}, respectively. The best accuracy on the validation data was achieved when $maxIterations=3$ and $maxIterations=3$, respectively, and for the same reason, I picked these values as $maxIterations$ to evaluate the performance (Tables 2 and 3).
-
-\begin{table}[htb]
-\centering
-  \begin{tabular}{|c|r|r|r|r|} \hline
-    data & accuracy & precision & recall & F1 \\ \hline
-    Training data & 0.90 & 0.91 & 0.85 & 0.88 \\ \hline
-    Validation data & 0.96 & 0.93 & 1.0 & 0.96 \\ \hline
-    Test data & 0.57 & 0.55 & 0.69 & 0.61 \\ \hline
-  \end{tabular}
-  \caption{The performace for $featureSet = 2$ and $maxIterations = 3$}
-\end{table}
+In the similar manner, I experimented the learning curves for $featrueSet=2$ and $featureSet=3$, and the results are shown in Figures \ref{fig:learning_curve_2} and \ref{fig:learning_curve_3}, respectively. The best accuracy on the validation data was achieved when $maxIterations=3$ and $maxIterations=5$, respectively, and I chose these values as $maxIterations$ to evaluate the performance (Tables 2 and 3).
 
 \begin{figure}[hbtp]
 \centering
-\includegraphics[width=100mm]{learning_curve_2}
+\includegraphics[width=130mm]{learning_curve_2}
 \caption{The performance evolution over the number of iterations for $featureSet=2$}
 \label{fig:learning_curve_2}
 \end{figure}
 
-\begin{table}[htb]
+\begin{figure}[b]
 \centering
-  \begin{tabular}{|c|r|r|r|r|} \hline
-    data & accuracy & precision & recall & F1 \\ \hline
-    Training data & 0.92 & 0.89 & 0.94 & 0.91 \\ \hline
-    Validation data & 0.96 & 0.93 & 1.0 & 0.96 \\ \hline
-    Test data & 0.52 & 0.50 & 0.81 & 0.62 \\ \hline
-  \end{tabular}
-  \caption{The performace for $featureSet = 3$ and $maxIterations = 3$}
-\end{table}
-
-\begin{figure}[hbtp]
-\centering
-\includegraphics[width=100mm]{learning_curve_3}
+\includegraphics[width=130mm]{learning_curve_3}
 \caption{The performance evolution over the number of iterations for $featureSet=3$}
 \label{fig:learning_curve_3}
 \end{figure}
 
-The results show the significant improvement in the performance by using more complex feature set (i.e. $featureSet = 2$ or $featureSet = 3$). Notice that the performance on the test data is also improved by using complex feature set without overfitting. This indicates that the linear function helps to keep the hypothesis from being overfitting even if we use a comples feature set.
+\begin{table}[htb]
+\centering
+  \begin{tabular}{|c|r|r|r|r|} \hline
+    data & accuracy & precision & recall & F1 \\ \hline
+    Training data & 0.970 & 0.953 & 0.980 & 0.966 \\ \hline
+    Validation data & 0.967 & 0.931 & 1.0 & 0.964 \\ \hline
+    Test data & 0.581 & 0.554 & 0.836 & 0.666 \\ \hline
+  \end{tabular}
+  \caption{The performace result of $featureSet = 2$ when $maxIterations = 3$ is chosen.}
+\end{table}
+
+\begin{table}[htb]
+\centering
+  \begin{tabular}{|c|r|r|r|r|} \hline
+    data & accuracy & precision & recall & F1 \\ \hline
+    Training data & 0.974 & 0.994 & 0.946 & 0.970 \\ \hline
+    Validation data & 0.967 & 0.962 & 0.962 & 0.962 \\ \hline
+    Test data & 0.606 & 0.580 & 0.770 & 0.661 \\ \hline
+  \end{tabular}
+  \caption{The performace result of $featureSet = 3$ when $maxIterations = 5$ is chosen.}
+\end{table}
+
+
+
+The results show the significant improvement in the performance by using more complex feature set (i.e. $featureSet = 2$ or $featureSet = 3$). Notice that the performance on the test data is also improved by using complex feature set without overfitting. For instance, the accuracy on the test data improved from 0.529 to 0.581 ($featureSet=2$) and 0.606 ($featureSet=3$). This indicates that the higher dimensions of representation is more expressive and can reduce the error. However, the computation time significantly increases, and this approach may not be applicable when the original dimensionality is very high.
 
 \end{document}
 
