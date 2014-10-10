@@ -292,27 +292,30 @@ def drawLearningCurve(startMaxIterations, endMaxIterations, featureSet, saveFile
 	list_t = []
 	list_v = []
 	list_ts = []
-	max_F1 = -1
+	max_performance = -1
 	max_maxIterations = 0
 	max_results = []
+
+	# use the accuracy to draw the learning curve
+	perfType = 0
 
 	for maxIterations in xrange(startMaxIterations, endMaxIterations):
 		print(maxIterations)
 		(results, w) = Perceptron(maxIterations, featureSet)
 		#print("final w: " + str(w))
 		nExamples.append(maxIterations)
-		list_t.append(results[0][3])
-		list_v.append(results[1][3])
-		list_ts.append(results[2][3])
+		list_t.append(results[0][perfType])
+		list_v.append(results[1][perfType])
+		list_ts.append(results[2][perfType])
 
-		# keep the best F1
-		if results[1][3] > max_F1:
-			max_F1 = results[1][3]
+		# keep the best performance
+		if results[1][perfType] > max_performance:
+			max_performance = results[1][perfType]
 			max_maxIterations = maxIterations
 			max_results = results
 
 	# show the best
-	print("maxIterations: " + str(max_maxIterations) + " (F1: " + str(max_F1) + ")")
+	print("maxIterations: " + str(max_maxIterations) + " (accuracy: " + str(max_performance) + ")")
 	print("=== Training data ===")
 	print("accuracy: " + str(max_results[0][0]) + " / precision: " +  str(max_results[0][1]) + " / recall: " + str(max_results[0][2]) + " / F1: " + str(max_results[0][3]))
 	print("=== Validation data ===")
@@ -324,7 +327,7 @@ def drawLearningCurve(startMaxIterations, endMaxIterations, featureSet, saveFile
 	plt.plot(nExamples, list_t, "-", label="training")
 	plt.plot(nExamples, list_v, "-", label="validation")
 	plt.plot(nExamples, list_ts, "-", label="test")
-	plt.title("F1")
+	plt.title("Learning Curve")
 	plt.xlim(0, endMaxIterations)
 	plt.ylim(0, 1.0)
 	plt.legend(loc='upper left')
@@ -339,8 +342,8 @@ def drawLearningCurve(startMaxIterations, endMaxIterations, featureSet, saveFile
 # Main function
 if __name__ == '__main__':
 	#Perceptron(1, 1)
-	#(results, w) = Perceptron(10, 1)
+	#(results, w) = Perceptron(3, 1)
 	#print(results)
 
-	drawLearningCurve(1, 30, 1, True)
+	drawLearningCurve(1, 10, 1, True)
 
