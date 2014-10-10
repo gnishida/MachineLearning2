@@ -2,38 +2,59 @@ import numpy as np
 import pylab as plt
 import math
 
-
-# Example
+###############################################################################
+# Example class
+#
+# This class represents each example.
+#
 class Example:
 	def __init__(self, row, label, weight):
 		self.row = row
 		self.label = label
 		self.weight = weight
 
+###############################################################################
 # Create a feature vector for a given example based on the feature representation
 #  vars   feature representation
 #  row    example
 #  return feature vector
-def _x(vars, row):
+def _x(attr_types, vars, row):
 	x = np.zeros(len(vars) + 1)
 
 	for i in xrange(len(vars)):
 		bit = 1
 		for var in vars[i]:
-			if row[var[0]] != var[1]:
+			if row[var[0]] == "?":
 				bit = 0
+			elif attr_types[var[0]] == "B":
+				if row[var[0]] != var[1]:
+					bit = 0
+			else:
+				if not eval(row[var[0]] + str(var[1])):
+					bit = 0
+
 		x[i] = bit
 
 	x[len(vars)] = 1
 
 	return x
 
+###############################################################################
+# sgn function
+#
+# return 1 for x > 0, -1 otherwise.
+#
 def _sgn(x):
 	if np.sign(x) > 0: return 1
 	else: return -1
 
+###############################################################################
 # Report the accuracy, precision, recall, and F1 for given examples and weight vector
-def report(examples, w, vars):
+#
+# Calculate performance values and return them in the following format.
+# [accuracy, precision, recall, F1-score]
+#
+def report(examples, w, vars, attr_types):
 	correct = 0
 	incorrect = 0
 	true_pos = 0
@@ -41,7 +62,7 @@ def report(examples, w, vars):
 	false_neg = 0
 
 	for i in xrange(len(examples)):
-		x = _x(vars, examples[i].row)
+		x = _x(attr_types, vars, examples[i].row)
 
 		if examples[i].label == "+": y = 1
 		else: y = -1
@@ -72,7 +93,69 @@ def report(examples, w, vars):
 	#print("accuracy: " + str(accuracy) + " / precision: " + str(precision) + " / recall: " + str(recall) + " / F1: " + str(F1))
 	return [accuracy, precision, recall, F1]
 
+###############################################################################
+# Find the thresholds
+def findThresholds(examples, attr_index):
+	thresholds = []
+
+	# extract only valid values
+	examples2 = []
+	for example in examples:
+		if example.row[attr_index] == "?": continue
+		examples2.append(example)
+
+	if len(examples2) == 0: return thresholds
+
+	# sort
+	#rows2 = sorted(rows, key=lambda row: float(row[attr_index]))
+	examples2.sort(key=lambda example: float(example.row[attr_index]))
+
+	previous_label = examples2[0].label
+	previous_value = float(examples2[0].row[attr_index])
+	for example2 in examples2:
+		if previous_label == "?" and previous_value == float(example2.row[attr_index]): continue
+
+		if example2.label != previous_label:
+			previous_label = example2.label
+
+			if previous_value == float(example2.row[attr_index]):
+				previous_label = "?"
+			else:
+				thresholds.append((previous_value + float(example2.row[attr_index])) * 0.5)
+		previous_value = float(example2.row[attr_index])
+
+	return thresholds
+
+def buildFeatureSet(attr_index, attr_type, attr_values):
+	featureSet = []
+
+	if attr_type == "B":
+		for val in attr_values:
+			featureSet.append([[attr_index, val]])
+	else:
+		for i in xrange(len(attr_values)):
+			var = attr_values[i]
+
+			if i == len(attr_values) - 1:
+				featureSet.append([[attr_index, ">=" + str(var)]])
+			else:
+				if i == 0:
+					featureSet.append([[attr_index, "<" + str(var)]])
+				next_var = attr_values[i + 1]
+				featureSet.append([[attr_index, ">=" + str(var)], [attr_index, "<" + str(next_var)]])
+
+			#if i == 0:
+			#	featureSet.append([[attr_index, "<" + str(var)]])
+			#featureSet.append([[attr_index, ">=" + str(var)]])
+
+	return featureSet
+
+###############################################################################
 # Perceptron
+#
+# @param maxIterations	the maximum iteration.
+# @param featureSet		1 - original attributes / 2 - feature pairs / 3 - use all the features in 1-2 as required in the instruction.
+# @return performance results in the order of "training data", "validation data", and "test data". For each data, "accuracy", "precision", "recall", and "F1-score" are stored in the list.
 def Perceptron(maxIterations, featureSet):
 	attr_types = {0: "B", 1: "C", 2: "C", 3: "B", 4: "B", 5: "B", 6: "B", 7: "C", 8: "B", 9: "B", 10: "C", 11: "B", 12: "B", 13: "C", 14: "C"}
 	#attr_types = {0: "B", 1: "B"}
@@ -80,55 +163,60 @@ def Perceptron(maxIterations, featureSet):
 	examples = readData("train.txt")
 
 	# get all the possible values for each attribute
+	# MODIFIED: for the continuous attributes, we use thresholds.
 	attr_values = {}
 	for attr_index, attr_type in attr_types.iteritems():
-		if attr_type == "C": continue
+		#if attr_type == "C": continue
 
 		#print(attr_index)
 
 		attr_values[attr_index] = []
 
-		for example in examples:
-			if example.row[attr_index] == "?": continue
-			if example.row[attr_index] not in attr_values[attr_index]:
-				attr_values[attr_index].append(example.row[attr_index])
+		if (attr_type == "B"):
+			for example in examples:
+				if example.row[attr_index] == "?": continue
+				if example.row[attr_index] not in attr_values[attr_index]:
+					attr_values[attr_index].append(example.row[attr_index])
+		else:
+			attr_values[attr_index] = findThresholds(examples, attr_index)
+
 
 		#for val in attr_values[attr_index]:
-		#	print("  " + val)
+		#	print("  " + str(val))
 
 	# setup feature representation
 	vars = []
 	if featureSet == 1 or featureSet == 3:
 		for attr_index, attr_type in attr_types.iteritems():
-			if attr_type == "C": continue
+			#if attr_type == "C": continue
 
-			for val in attr_values[attr_index]:
-				vars.append([[attr_index, val]])
+			if (attr_type == "B"):
+				vars += buildFeatureSet(attr_index, attr_type, attr_values[attr_index])
+			else:
+				vars += buildFeatureSet(attr_index, attr_type, attr_values[attr_index])
 
 
 	if featureSet == 2 or featureSet == 3:
 		attr_indices = attr_types.keys()
 		for i in xrange(len(attr_indices)):
 			attr_type1 = attr_types[attr_indices[i]]
-			if attr_type1 == "C": continue
+			#if attr_type1 == "C": continue
+			set1 = buildFeatureSet(attr_indices[i], attr_types[attr_indices[i]], attr_values[attr_indices[i]])
 
 			for j in xrange(i+1, len(attr_indices)):
 				attr_type2 = attr_types[attr_indices[j]]
-				if attr_type2 == "C": continue
+				#if attr_type2 == "C": continue
+				set2 = buildFeatureSet(attr_indices[j], attr_types[attr_indices[j]], attr_values[attr_indices[j]])
 
-				for val1 in attr_values[attr_indices[i]]:
-					for val2 in attr_values[attr_indices[j]]:
-						list = []
-						list.append([attr_indices[i], val1])
-						list.append([attr_indices[j], val2])
-						vars.append(list)
+				for k in xrange(len(set1)):
+					for l in xrange(len(set2)):
+						vars.append(set1[k] + set2[l])
 
 	#print("============= variables =======")
 	#for list in vars:
 	#	for combination in list:
 	#		print(str(combination[0]) + ":" + combination[1]),
 	#	print
-
 
 	# initialize the weight vector
 	w = np.zeros(len(vars) + 1)
@@ -139,30 +227,28 @@ def Perceptron(maxIterations, featureSet):
 
 	correct = 0
 	incorrect = 0
-	for i in xrange(len(examples)):
-		# if it reaches the maxIterations, stop learning.
-		if i >= maxIterations: break
+	for iter in xrange(maxIterations):
+		for i in xrange(len(examples)):
+			# compute feature vector
+			x = _x(attr_types, vars, examples[i].row)
 
-		# compute feature vector
-		x = _x(vars, examples[i].row)
+			# get the true label
+			if examples[i].label == "+": y = 1
+			else: y = -1
 
-		# get the true label
-		if examples[i].label == "+": y = 1
-		else: y = -1
-
-		# predict the label
-		h = _sgn(np.dot(w, x))
-		#print("x: " + str(x) + " h: " + str(h) + " y: " + str(y))
-		if h == y:
-			#print("OK")
-			correct += 1
-			continue
-		else:
-			#print("NG")
-			incorrect += 1
-			# update the weight vector
-			w += r * y * x;
-			#print("w: " + str(w))
+			# predict the label
+			h = _sgn(np.dot(w, x))
+			#print("x: " + str(x) + " h: " + str(h) + " y: " + str(y))
+			if h == y:
+				#print("OK")
+				correct += 1
+				continue
+			else:
+				#print("NG")
+				incorrect += 1
+				# update the weight vector
+				w += r * y * x;
+				#print("w: " + str(w))
 
 	#print("============== final weight ============")
 	#print(w)
@@ -170,19 +256,20 @@ def Perceptron(maxIterations, featureSet):
 
 	ret = []
 	#print("============== test on the training data ========")
-	ret.append(report(examples, w, vars))
+	ret.append(report(examples, w, vars, attr_types))
 
 	#print("============== test on the validation data ========")
 	examples = readData("validation.txt")
-	ret.append(report(examples, w, vars))
+	ret.append(report(examples, w, vars, attr_types))
 
 	#print("============== test on the test data ========")
 	examples = readData("test.txt")
-	ret.append(report(examples, w, vars))
+	ret.append(report(examples, w, vars, attr_types))
 
 	return (ret, w)
 
-#readfile:
+###############################################################################
+# readfile:
 #   Input: filename
 #   Output: return a list of rows.
 def readData(filename):
@@ -198,7 +285,9 @@ def readData(filename):
 
 	return examples
 
-if __name__ == '__main__':
+###############################################################################
+# Draw learning curves of Perceptron
+def drawLearningCurve(startMaxIterations, endMaxIterations, featureSet, saveFile):
 	nExamples = []
 	list_t = []
 	list_v = []
@@ -207,10 +296,9 @@ if __name__ == '__main__':
 	max_maxIterations = 0
 	max_results = []
 
-	for maxIterations in xrange(10, 491):
-	#for maxIterations in xrange(100, 101):
+	for maxIterations in xrange(startMaxIterations, endMaxIterations):
 		print(maxIterations)
-		(results, w) = Perceptron(maxIterations, 3)
+		(results, w) = Perceptron(maxIterations, featureSet)
 		#print("final w: " + str(w))
 		nExamples.append(maxIterations)
 		list_t.append(results[0][3])
@@ -237,9 +325,22 @@ if __name__ == '__main__':
 	plt.plot(nExamples, list_v, "-", label="validation")
 	plt.plot(nExamples, list_ts, "-", label="test")
 	plt.title("F1")
-	plt.xlim(0, 500)
+	plt.xlim(0, endMaxIterations)
 	plt.ylim(0, 1.0)
 	plt.legend(loc='upper left')
-	#plt.show()
-	plt.savefig("result.eps")
+
+	if (saveFile):
+		plt.savefig("result.eps")
+
+	plt.show()
+
+
+###############################################################################
+# Main function
+if __name__ == '__main__':
+	#Perceptron(1, 1)
+	#(results, w) = Perceptron(10, 1)
+	#print(results)
+
+	drawLearningCurve(1, 30, 1, True)
 
