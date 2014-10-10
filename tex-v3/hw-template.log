@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.9.10)  10 OCT 2014 13:27
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.9.10)  10 OCT 2014 14:50
 entering extended mode
 **D:/GitHub/MachineLearning2/tex-v3/hw-template.tex
 (D:/GitHub/MachineLearning2/tex-v3/hw-template.tex
@@ -303,12 +303,6 @@ File: learning_process.jpg Graphic file (type jpg)
 Package pdftex.def Info: learning_process.jpg used on input line 83.
 (pdftex.def)             Requested size: 284.52756pt x 182.47948pt.
  [2 <D:/GitHub/MachineLearning2/tex-v3/learning_process.jpg>]
-Overfull \hbox (13.53337pt too wide) in paragraph at lines 111--112
-\OT1/cmr/m/n/12 racy on the val-i-da-tion data was achieved when $\OML/cmm/m/it
-/12 maxIterations \OT1/cmr/m/n/12 = 3$, so I picked $\OML/cmm/m/it/12 maxIterat
-ions \OT1/cmr/m/n/12 =$
- []
-
 Package epstopdf Info: Source file: <learning_curve_1.eps>
 (epstopdf)                    date: 2014-10-10 13:01:52
 (epstopdf)                    size: 19878 bytes
@@ -317,14 +311,14 @@ Package epstopdf Info: Source file: <learning_curve_1.eps>
 (epstopdf)                    size: 13658 bytes
 (epstopdf)             Command: <epstopdf --outfile=learning_curve_1-eps-conver
 ted-to.pdf learning_curve_1.eps>
-(epstopdf)             \includegraphics on input line 126.
+(epstopdf)             \includegraphics on input line 125.
 Package epstopdf Info: Output file is already uptodate.
-<learning_curve_1-eps-converted-to.pdf, id=21, 578.16pt x 433.62pt>
+ <learning_curve_1-eps-converted-to.pdf, id=21, 578.16pt x 433.62pt>
 File: learning_curve_1-eps-converted-to.pdf Graphic file (type pdf)
 
 <use learning_curve_1-eps-converted-to.pdf>
 Package pdftex.def Info: learning_curve_1-eps-converted-to.pdf used on input li
-ne 126.
+ne 125.
 (pdftex.def)             Requested size: 284.52756pt x 213.39536pt.
 Package epstopdf Info: Source file: <learning_curve_2.eps>
 (epstopdf)                    date: 2014-10-03 14:41:44
@@ -334,7 +328,7 @@ Package epstopdf Info: Source file: <learning_curve_2.eps>
 (epstopdf)                    size: 14447 bytes
 (epstopdf)             Command: <epstopdf --outfile=learning_curve_2-eps-conver
 ted-to.pdf learning_curve_2.eps>
-(epstopdf)             \includegraphics on input line 146.
+(epstopdf)             \includegraphics on input line 145.
 Package epstopdf Info: Output file is already uptodate.
 
 <learning_curve_2-eps-converted-to.pdf, id=22, 578.16pt x 433.62pt>
@@ -342,7 +336,7 @@ File: learning_curve_2-eps-converted-to.pdf Graphic file (type pdf)
 
 <use learning_curve_2-eps-converted-to.pdf>
 Package pdftex.def Info: learning_curve_2-eps-converted-to.pdf used on input li
-ne 146.
+ne 145.
 (pdftex.def)             Requested size: 284.52756pt x 213.39536pt.
 Package epstopdf Info: Source file: <learning_curve_3.eps>
 (epstopdf)                    date: 2014-10-03 14:52:38
@@ -352,7 +346,7 @@ Package epstopdf Info: Source file: <learning_curve_3.eps>
 (epstopdf)                    size: 14638 bytes
 (epstopdf)             Command: <epstopdf --outfile=learning_curve_3-eps-conver
 ted-to.pdf learning_curve_3.eps>
-(epstopdf)             \includegraphics on input line 164.
+(epstopdf)             \includegraphics on input line 163.
 Package epstopdf Info: Output file is already uptodate.
 
 <learning_curve_3-eps-converted-to.pdf, id=23, 578.16pt x 433.62pt>
@@ -360,7 +354,7 @@ File: learning_curve_3-eps-converted-to.pdf Graphic file (type pdf)
 
 <use learning_curve_3-eps-converted-to.pdf>
 Package pdftex.def Info: learning_curve_3-eps-converted-to.pdf used on input li
-ne 164.
+ne 163.
 (pdftex.def)             Requested size: 284.52756pt x 213.39536pt.
  [3] [4 <D:/GitHub/MachineLearning2/tex-v3/learning_curve_1-eps-converted-to.pd
 f> <D:/GitHub/MachineLearning2/tex-v3/learning_curve_2-eps-converted-to.pdf>] [
@@ -388,7 +382,7 @@ ype1/public/amsfonts/cm/cmr8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1
 ublic/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/pub
 lic/amsfonts/cm/cmsy8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public
 /amsfonts/cm/cmti12.pfb>
-Output written on hw-template.pdf (6 pages, 299301 bytes).
+Output written on hw-template.pdf (6 pages, 299359 bytes).
 PDF statistics:
  152 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

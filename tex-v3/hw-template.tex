@@ -107,14 +107,13 @@ K(x, y)={}_{same(x,y)} C _0 + {}_{same(x,y)} C _1 + {}_{same(x,y)} C _2 + \cdots
 
 \section{Programming Assignment}
 
-
-The learning curve of the accuracy for $featrueSet=1$ is shown in Figure \ref{fig:learning_curve_1}.  The best accuracy on the validation data was achieved when $maxIterations=3$, so I picked $maxIterations = 3$ to evaluate the performance on the data (Table 1). It might be better to use F1-score to choose the best $maxIterations$, and I believe that it depends on the applications.
+I used 0.01 as the learning rate for my implementation. The learning curve in terms of the accuracy for $featrueSet=1$ is shown in Figure \ref{fig:learning_curve_1}.  The best accuracy on the validation data was achieved when $maxIterations=3$, so I picked $maxIterations = 3$ to evaluate the performance on the data (Table 1). It might be better to use F1-score to choose the best $maxIterations$, and I believe that it depends on the applications.
 
 \begin{table}[htb]
 \centering
   \begin{tabular}{|c|r|r|r|r|} \hline
     data & accuracy & precision & recall & F1 \\ \hline
-    Training data & 0.957 & 0.940 & 0.762 & 0.951 \\ \hline
+    Training data & 0.957 & 0.940 & 0.962 & 0.951 \\ \hline
     Validation data & 0.969 & 0.931 & 1.0 & 0.964 \\ \hline
     Test data & 0.529 & 0.516 & 0.696 & 0.593 \\ \hline
   \end{tabular}

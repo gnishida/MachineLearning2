@@ -1,6 +1,8 @@
 import numpy as np
 import pylab as plt
 import math
+import sys
+import random
 
 ###############################################################################
 # Example class
@@ -121,7 +123,8 @@ def findThresholds(examples, attr_index):
 			if previous_value == float(example2.row[attr_index]):
 				previous_label = "?"
 			else:
-				thresholds.append((previous_value + float(example2.row[attr_index])) * 0.5)
+				if random.randint(0, 10) > 8:
+					thresholds.append((previous_value + float(example2.row[attr_index])) * 0.5)
 		previous_value = float(example2.row[attr_index])
 
 	return thresholds
@@ -157,7 +160,8 @@ def buildFeatureSet(attr_index, attr_type, attr_values):
 # @param featureSet		1 - original attributes / 2 - feature pairs / 3 - use all the features in 1-2 as required in the instruction.
 # @return performance results in the order of "training data", "validation data", and "test data". For each data, "accuracy", "precision", "recall", and "F1-score" are stored in the list.
 def Perceptron(maxIterations, featureSet):
-	attr_types = {0: "B", 1: "C", 2: "C", 3: "B", 4: "B", 5: "B", 6: "B", 7: "C", 8: "B", 9: "B", 10: "C", 11: "B", 12: "B", 13: "C", 14: "C"}
+	#attr_types = {0: "B", 1: "C", 2: "C", 3: "B", 4: "B", 5: "B", 6: "B", 7: "C", 8: "B", 9: "B", 10: "C", 11: "B", 12: "B", 13: "C", 14: "C"}
+	attr_types = ["B", "C", "C", "B", "B", "B", "B", "C", "B", "B", "C", "B", "B", "C", "C"]
 	#attr_types = {0: "B", 1: "B"}
 
 	examples = readData("train.txt")
@@ -165,14 +169,14 @@ def Perceptron(maxIterations, featureSet):
 	# get all the possible values for each attribute
 	# MODIFIED: for the continuous attributes, we use thresholds.
 	attr_values = {}
-	for attr_index, attr_type in attr_types.iteritems():
+	for attr_index in xrange(len(attr_types)):
 		#if attr_type == "C": continue
 
 		#print(attr_index)
 
 		attr_values[attr_index] = []
 
-		if (attr_type == "B"):
+		if attr_types[attr_index] == "B":
 			for example in examples:
 				if example.row[attr_index] == "?": continue
 				if example.row[attr_index] not in attr_values[attr_index]:
@@ -187,26 +191,23 @@ def Perceptron(maxIterations, featureSet):
 	# setup feature representation
 	vars = []
 	if featureSet == 1 or featureSet == 3:
-		for attr_index, attr_type in attr_types.iteritems():
+		for attr_index in xrange(len(attr_types)):
 			#if attr_type == "C": continue
 
-			if (attr_type == "B"):
-				vars += buildFeatureSet(attr_index, attr_type, attr_values[attr_index])
-			else:
-				vars += buildFeatureSet(attr_index, attr_type, attr_values[attr_index])
+			vars += buildFeatureSet(attr_index, attr_types[attr_index], attr_values[attr_index])
 
 
 	if featureSet == 2 or featureSet == 3:
-		attr_indices = attr_types.keys()
-		for i in xrange(len(attr_indices)):
-			attr_type1 = attr_types[attr_indices[i]]
+		#attr_indices = attr_types.keys()
+		for i in xrange(len(attr_types)):
+			#attr_type1 = attr_types[attr_indices[i]]
 			#if attr_type1 == "C": continue
-			set1 = buildFeatureSet(attr_indices[i], attr_types[attr_indices[i]], attr_values[attr_indices[i]])
+			set1 = buildFeatureSet(i, attr_types[i], attr_values[i])
 
-			for j in xrange(i+1, len(attr_indices)):
-				attr_type2 = attr_types[attr_indices[j]]
+			for j in xrange(i+1, len(attr_types)):
+				#attr_type2 = attr_types[attr_indices[j]]
 				#if attr_type2 == "C": continue
-				set2 = buildFeatureSet(attr_indices[j], attr_types[attr_indices[j]], attr_values[attr_indices[j]])
+				set2 = buildFeatureSet(j, attr_types[j], attr_values[j])
 
 				for k in xrange(len(set1)):
 					for l in xrange(len(set2)):
@@ -229,6 +230,8 @@ def Perceptron(maxIterations, featureSet):
 	incorrect = 0
 	for iter in xrange(maxIterations):
 		for i in xrange(len(examples)):
+			sys.stdout.write(".")
+
 			# compute feature vector
 			x = _x(attr_types, vars, examples[i].row)
 
@@ -249,6 +252,7 @@ def Perceptron(maxIterations, featureSet):
 				# update the weight vector
 				w += r * y * x;
 				#print("w: " + str(w))
+	print
 
 	#print("============== final weight ============")
 	#print(w)
@@ -279,6 +283,10 @@ def readData(filename):
 	#for line in f.split('\n'):
 		if line == "": continue
 		row = line.split('\t')
+
+		# ignore the example which contains missing values
+		if "?" in row: continue
+
 		label = row[len(row) - 1]
 		row.pop(len(row) - 1)
 		examples.append(Example(row, label, 1.0))
@@ -342,8 +350,8 @@ def drawLearningCurve(startMaxIterations, endMaxIterations, featureSet, saveFile
 # Main function
 if __name__ == '__main__':
 	#Perceptron(1, 1)
-	#(results, w) = Perceptron(3, 1)
+	#(results, w) = Perceptron(1, 2)
 	#print(results)
 
-	drawLearningCurve(1, 10, 1, True)
+	drawLearningCurve(1, 7, 2, True)
 
