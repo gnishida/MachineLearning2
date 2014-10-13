@@ -1,0 +1,7 @@
+maxIterations: 2 (accuracy: 0.967741935484)
+=== Training data ===
+accuracy: 0.961538461538 / precision: 0.965517241379 / recall: 0.946859903382 / F1: 0.956097560976
+=== Validation data ===
+accuracy: 0.967741935484 / precision: 0.931034482759 / recall: 1.0 / F1: 0.964285714286
+=== Test data ===
+accuracy: 0.655737704918 / precision: 0.623376623377 / recall: 0.786885245902 / F1: 0.695652173913

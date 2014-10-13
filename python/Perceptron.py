@@ -123,8 +123,8 @@ def findThresholds(examples, attr_index):
 			if previous_value == float(example2.row[attr_index]):
 				previous_label = "?"
 			else:
-				if random.randint(0, 10) > 8:
-					thresholds.append((previous_value + float(example2.row[attr_index])) * 0.5)
+				#if random.randint(0, 10) >= 5:
+				thresholds.append((previous_value + float(example2.row[attr_index])) * 0.5)
 		previous_value = float(example2.row[attr_index])
 
 	return thresholds
@@ -331,6 +331,17 @@ def drawLearningCurve(startMaxIterations, endMaxIterations, featureSet, saveFile
 	print("=== Test data ===")
 	print("accuracy: " + str(max_results[2][0]) + " / precision: " +  str(max_results[2][1]) + " / recall: " + str(max_results[2][2]) + " / F1: " + str(max_results[2][3]))
 
+	# save the best
+	f = open("best_results.txt", "w")
+	f.write("maxIterations: " + str(max_maxIterations) + " (accuracy: " + str(max_performance) + ")\n")
+	f.write("=== Training data ===\n")
+	f.write("accuracy: " + str(max_results[0][0]) + " / precision: " +  str(max_results[0][1]) + " / recall: " + str(max_results[0][2]) + " / F1: " + str(max_results[0][3]) + "\n")
+	f.write("=== Validation data ===\n")
+	f.write("accuracy: " + str(max_results[1][0]) + " / precision: " +  str(max_results[1][1]) + " / recall: " + str(max_results[1][2]) + " / F1: " + str(max_results[1][3]) + "\n")
+	f.write("=== Test data ===\n")
+	f.write("accuracy: " + str(max_results[2][0]) + " / precision: " +  str(max_results[2][1]) + " / recall: " + str(max_results[2][2]) + " / F1: " + str(max_results[2][3]) + "\n")
+	f.close()
+
 	# show the accuracy graph
 	plt.plot(nExamples, list_t, "-", label="training")
 	plt.plot(nExamples, list_v, "-", label="validation")
@@ -353,5 +364,5 @@ if __name__ == '__main__':
 	#(results, w) = Perceptron(1, 2)
 	#print(results)
 
-	drawLearningCurve(1, 10, 1, True)
+	drawLearningCurve(1, 11, 2, True)
 

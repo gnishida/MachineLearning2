@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.9.10)  10 OCT 2014 17:58
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.9.10)  13 OCT 2014 11:47
 entering extended mode
 **D:/GitHub/MachineLearning2/tex-v3/hw-template.tex
 (D:/GitHub/MachineLearning2/tex-v3/hw-template.tex
@@ -289,20 +289,20 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 20.
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Overfull \hbox (6.26404pt too wide) in alignment at lines 25--28
+Overfull \hbox (6.26404pt too wide) in alignment at lines 26--29
  [][][] []
  []
 
 [1
 
 {C:/Users/gnishida/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-<learning_process.jpg, id=14, 743.02594pt x 476.53032pt>
+<learning_process.jpg, id=13, 743.02594pt x 476.53032pt>
 File: learning_process.jpg Graphic file (type jpg)
 
 <use learning_process.jpg>
-Package pdftex.def Info: learning_process.jpg used on input line 83.
+Package pdftex.def Info: learning_process.jpg used on input line 89.
 (pdftex.def)             Requested size: 284.52756pt x 182.47948pt.
- [2 <D:/GitHub/MachineLearning2/tex-v3/learning_process.jpg>]
+ [2]
 Package epstopdf Info: Source file: <learning_curve_1.eps>
 (epstopdf)                    date: 2014-10-10 13:01:52
 (epstopdf)                    size: 19878 bytes
@@ -311,15 +311,17 @@ Package epstopdf Info: Source file: <learning_curve_1.eps>
 (epstopdf)                    size: 13658 bytes
 (epstopdf)             Command: <epstopdf --outfile=learning_curve_1-eps-conver
 ted-to.pdf learning_curve_1.eps>
-(epstopdf)             \includegraphics on input line 127.
+(epstopdf)             \includegraphics on input line 136.
 Package epstopdf Info: Output file is already uptodate.
- <learning_curve_1-eps-converted-to.pdf, id=21, 578.16pt x 433.62pt>
+
+<learning_curve_1-eps-converted-to.pdf, id=22, 578.16pt x 433.62pt>
 File: learning_curve_1-eps-converted-to.pdf Graphic file (type pdf)
 
 <use learning_curve_1-eps-converted-to.pdf>
 Package pdftex.def Info: learning_curve_1-eps-converted-to.pdf used on input li
-ne 127.
+ne 136.
 (pdftex.def)             Requested size: 369.88582pt x 277.40999pt.
+ [3 <D:/GitHub/MachineLearning2/tex-v3/learning_process.jpg>]
 Package epstopdf Info: Source file: <learning_curve_2.eps>
 (epstopdf)                    date: 2014-10-10 16:27:48
 (epstopdf)                    size: 22036 bytes
@@ -328,17 +330,16 @@ Package epstopdf Info: Source file: <learning_curve_2.eps>
 (epstopdf)                    size: 15215 bytes
 (epstopdf)             Command: <epstopdf --outfile=learning_curve_2-eps-conver
 ted-to.pdf learning_curve_2.eps>
-(epstopdf)             \includegraphics on input line 136.
+(epstopdf)             \includegraphics on input line 145.
 Package epstopdf Info: Output file is already uptodate.
 
-<learning_curve_2-eps-converted-to.pdf, id=22, 578.16pt x 433.62pt>
+<learning_curve_2-eps-converted-to.pdf, id=26, 578.16pt x 433.62pt>
 File: learning_curve_2-eps-converted-to.pdf Graphic file (type pdf)
 
 <use learning_curve_2-eps-converted-to.pdf>
 Package pdftex.def Info: learning_curve_2-eps-converted-to.pdf used on input li
-ne 136.
+ne 145.
 (pdftex.def)             Requested size: 369.88582pt x 277.40999pt.
- [3]
 Package epstopdf Info: Source file: <learning_curve_3.eps>
 (epstopdf)                    date: 2014-10-10 17:32:33
 (epstopdf)                    size: 22038 bytes
@@ -347,28 +348,29 @@ Package epstopdf Info: Source file: <learning_curve_3.eps>
 (epstopdf)                    size: 15219 bytes
 (epstopdf)             Command: <epstopdf --outfile=learning_curve_3-eps-conver
 ted-to.pdf learning_curve_3.eps>
-(epstopdf)             \includegraphics on input line 143.
+(epstopdf)             \includegraphics on input line 152.
 Package epstopdf Info: Output file is already uptodate.
 
-<learning_curve_3-eps-converted-to.pdf, id=26, 578.16pt x 433.62pt>
+<learning_curve_3-eps-converted-to.pdf, id=27, 578.16pt x 433.62pt>
 File: learning_curve_3-eps-converted-to.pdf Graphic file (type pdf)
 
 <use learning_curve_3-eps-converted-to.pdf>
 Package pdftex.def Info: learning_curve_3-eps-converted-to.pdf used on input li
-ne 143.
+ne 152.
 (pdftex.def)             Requested size: 369.88582pt x 277.40999pt.
  [4 <D:/GitHub/MachineLearning2/tex-v3/learning_curve_1-eps-converted-to.pdf>] 
-[5 <D:/GitHub/MachineLearning2/tex-v3/learning_curve_2-eps-converted-to.pdf> <D
-:/GitHub/MachineLearning2/tex-v3/learning_curve_3-eps-converted-to.pdf>]
+[5 <D:/GitHub/MachineLearning2/tex-v3/learning_curve_2-eps-converted-to.pdf>] [
+6] [7 <D:/GitHub/MachineLearning2/tex-v3/learning_curve_3-eps-converted-to.pdf>
+]
 (D:\GitHub\MachineLearning2\tex-v3\hw-template.aux) ) 
 Here is how much of TeX's memory you used:
  3035 strings out of 493921
  42063 string characters out of 3144867
- 103395 words of memory out of 3000000
+ 104395 words of memory out of 3000000
  6255 multiletter control sequences out of 15000+200000
  10496 words of font info for 39 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 44i,9n,24p,729b,361s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 44i,9n,24p,699b,365s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files (x86)/Mi
 KTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files (x86)/MiKT
 eX 2.9/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Program Files (x86)/MiKTe
@@ -381,10 +383,11 @@ ype1/public/amsfonts/cm/cmr8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1
 /public/amsfonts/cm/cmsl12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/p
 ublic/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/pub
 lic/amsfonts/cm/cmsy8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public
-/amsfonts/cm/cmti12.pfb>
-Output written on hw-template.pdf (5 pages, 301106 bytes).
+/amsfonts/cm/cmti12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/a
+msfonts/symbols/msbm10.pfb>
+Output written on hw-template.pdf (7 pages, 311673 bytes).
 PDF statistics:
- 157 PDF objects out of 1000 (max. 8388607)
+ 169 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -21,6 +21,7 @@
 
 (1) Boolean function
 
+{\bf Answer:}\\
 By using conjunctions for every combination of three variables, we can test if at least three variables are active. Therefore, the Boolean function for this can be represented as follows:
 \begin{eqnarray*}
 f=(x_1 \wedge x_2 \wedge x_3) \vee (x_1 \wedge x_2 \wedge x_4) \vee (x_1 \wedge x_2 \wedge x_5) \vee (x_1 \wedge x_3 \wedge x_4) \vee (x_1 \wedge x_3 \wedge x_5) \\
@@ -29,6 +30,7 @@ f=(x_1 \wedge x_2 \wedge x_3) \vee (x_1 \wedge x_2 \wedge x_4) \vee (x_1 \wedge 
 
 (2) Linear function
 
+{\bf Answer:}\\
 The equivalent linear function just needs to check whether the sum is more than two. Thus,
 \[
 f = {\rm sign}(x_1 + x_2 + x_3 + x_4 + x_5 - 2)
@@ -44,18 +46,22 @@ where
 
 \item Let $CON_B$ be the set of all different monotone conjunctions defined over $n$ boolean variables. What is the size of $CON_B$?
 
+{\bf Answer:}\\
 For every variable, there are two cases, active or not active. Thus, the size of $CON_B$ is $2^n$. 
 
 \item Let $CON_L$ be the set of all linear functions defined over $n$ boolean variables that are consistent with the functions in $CON_B$. What is the size of $CON_L$?
 
-Given a monotone conjunction, one example of the equivalent linear functions is defined by the sign of the summation of all the active literals subtracted by (the number of the active literals - 1). For instance, for a monotone conjunction $f_b = x_1 \wedge x_3 \wedge x_5$, the corresponding linear function is $f_l = {\rm sign}(x_1 + x_3 + x_5 - 2)$. However, the linear function can have any real nubmer as the coefficient of each literal. In the above case, for instance, another equivalent linear function would be $f_l^\prime = {\rm sign}(2 x_1 + 2 x_3 + 2 x_5 - 4)$, and both $f_l$ and $_l^\prime$ are consistent with $f_b$. Thus, the size of $CON_L$ is inifinite.
+{\bf Answer:}\\
+Given a monotone conjunction, one example of the equivalent linear functions is defined by the sign of the summation of all the active literals subtracted by (the number of the active literals - 1). For instance, for a monotone conjunction $f_b = x_1 \wedge x_3 \wedge x_5$, the corresponding linear function is $f_l = {\rm sign}(x_1 + x_3 + x_5 - 2)$. However, the linear function can have any positive real nubmer as the coefficient of each literal. In the above case, any linear function $f_l^\prime = {\rm sign}(a x_1 + a x_3 + a x_5 - 2a)$ for $a \in \mathbb{R}; a > 0$, is consistent with $f_b$. Thus, the size of $CON_L$ is inifinite.
 
 \item Define in one sentence: Mistake bound.
 
+{\bf Answer:}\\
 Mistake bound is the maximum number of mistakes that can be made by an online learning algorithm, which is also used to evaluate the performance of the convergence of the algorithm. 
 
 \item Suggest a mistake bound algorithm for learning Boolean conjunctions. Show that your algorithm is a mistake bound algorithm for Boolean conjunctions.
 
+{\bf Answer:}\\
 Algorithm 1 shows the mistake bound algorithm for learning Boolean conjunctions.
 
 \begin{algorithm}
@@ -76,7 +82,7 @@ Algorithm 1 shows the mistake bound algorithm for learning Boolean conjunctions.
 
 An example of the learning process is shown in Figure \ref{fig:learning_process}. When the first mistake is made for an training data $x=(1, 0, 0)$, the literals $\neg x_1$, $ x_2$, and $x_3$ are not active, and these literals are removed from the conjunctions, which results in the updated hypothesis $h = x_1 \wedge \neg x_2 \wedge \neg x_3$. 
 
-For every mistake, we remove at least one unnecessary literal from the conjunctions. Since we have $2n$ literals at the beginning, and at least one literal in the conjunctions will be remained in the end, the total number of mistakes is at most $2n-1$, which is $O(n)$. Thus, this is a mistake bound algorithm.
+For every mistake, we remove at least one unnecessary literal from the conjunctions. Since we have $2n$ literals at the beginning, and at least one literal in the conjunctions will be remained in the end, the total number of mistakes is at most $2n-1$, which is $O(n)$. Since this is polynomial in the size of the hypothesis space, this is a mistake bound algorithm.
 
 \begin{figure}[hbtp]
 \centering
@@ -89,14 +95,17 @@ For every mistake, we remove at least one unnecessary literal from the conjuncti
 
 (1) Will both classifiers converge?
 
-Yes. For the linearly separable dataset, it is proved that the perceptron algorithm will converge, and the mistake bound is $R^2/\gamma^2$, which is independent from the order of the examples.
+{\bf Answer:}\\
+Yes. For the linearly separable dataset, it is proved that the perceptron algorithm will converge, and the mistake bound is $R^2/\gamma^2$ (Appendix A), which is independent from the order of the examples.
 
 (2) What will be the training error of each one of the classifiers?
 
-When both classifiers converge, no more mistakes will be made. In other words, the training error will be zero for both classifiers.
+{\bf Answer:}\\
+When both classifiers converge, no more mistakes will be made in the case of the linearly separable dataset. In other words, the training error will be zero for both classifiers.
 
 \item We showed in class that using the Boolean kernel function $K(x, y)=2^{same(x,y)}$ we can express all conjunctions over the attributes of $x$ and $y$ (with both the positive and negative literals). This representation can be too expressive. Suggest a kernel function $K(x, y)$ that can express all conjunctions of size at most $k$.
 
+{\bf Answer:}\\
 Every active conjunctions of size at most $k$ is a combination of positive or negative literals $l_i \in L$ that have the same value in $x$ and $y$ (i.e. $|L|=same(x,y)$). Then, counting the active conjunctions of size at most $k$ is reduced to selecting a set of literals of size at most $k$ from $L$. Thus,
 
 \[
@@ -107,9 +116,9 @@ K(x, y)={}_{same(x,y)} C _0 + {}_{same(x,y)} C _1 + {}_{same(x,y)} C _2 + \cdots
 
 \section{Programming Assignment}
 
-Regarding the continous attributes, I used thresholds as disscussed in class. Also, I ignored the examples which contain missing values during the learning. Finally, I used 0.01 as the learning rate for my implementation. 
+Regarding the continous attributes, I used thresholds as disscussed in class. Also, I ignored the examples which contain missing values during the learning. For the learning rate, I used 0.01 to avoid the oscillation caused by the too fast learning rate. 
 
-I ran my Perceptron algorithm with different $maxIterations$ from 1 to 7 in order to find the best $maxIterations$ which yields the best performance on the validation data. The learning curve in terms of the accuracy for $featrueSet=1$ is shown in Figure \ref{fig:learning_curve_1}.  The best accuracy on the validation data was achieved when $maxIterations=3$, so I chose $maxIterations = 3$ to evaluate the performance on the data (Table 1). It might be better to use F1-score to choose the best $maxIterations$, and I believe that it depends on the applications.
+Then, I ran my Perceptron algorithm with different $maxIterations$ from 1 to 10 in order to find the best $maxIterations$ which yields the best performance on the validation data. The learning curve in terms of the accuracy for $featrueSet = 1$  is shown in Figure \ref{fig:learning_curve_1}.  The best accuracy on the validation data was achieved when $maxIterations=3$, so I chose $maxIterations = 3$ to evaluate the performance on the data (Table 1). It might be better to use F1-score to choose the best $maxIterations$, and I believe that it depends on the applications.
 
 \begin{table}[htb]
 \centering
@@ -167,9 +176,53 @@ In the similar manner, I experimented the learning curves for $featrueSet=2$ and
   \caption{The performace result of $featureSet = 3$ when $maxIterations = 5$ is chosen.}
 \end{table}
 
-
-
 The results show the significant improvement in the performance by using more complex feature set (i.e. $featureSet = 2$ or $featureSet = 3$). Notice that the performance on the test data is also improved by using complex feature set without overfitting. For instance, the accuracy on the test data improved from 0.529 to 0.581 ($featureSet=2$) and 0.606 ($featureSet=3$). This indicates that the higher dimensions of representation is more expressive and can reduce the error. However, the computation time significantly increases, and this approach may not be applicable when the original dimensionality is very high.
+
+\section*{Appendix A}
+{\bf Mistake bound for Perceptron algorithm.} Here, I show the derivation of the mistake bound for Perceptron algorithm discussed in class. For every mistake, the weight vector is updated as follows:
+\begin{equation}
+w^{new}=w^{old}+x
+\end{equation}
+Here, we assume the positive example, but we will get the same result for the negative example as well. Let $v$ is the normal vector of an ideal hyperplane, and we assume that $v$ is normalized (i.e. $\|v\|=1$). By computing the dot product of the equation (1) and $v$, we get
+\begin{equation}
+v \cdot w^{new}=v \cdot w^{old}+v \cdot x
+\end{equation}
+For the positive example, the ideal hyperplane has the margin of at least $\gamma$. In other words, $v \cdot x \ge \gamma$. By plugging this into the equation (2), we get
+\[
+v \cdot w^{new}=v \cdot w^{old}+v \cdot x \ge v \cdot w^{old} + \gamma
+\]
+Since we initialize the weight vector as 0,
+\begin{equation}
+v \cdot w \ge \#mistakes \times \gamma
+\end{equation}
+Also, regarding the squared weight vector,
+\[
+\|w^{new}\|^2=(w^{old}+x) \cdot (w^{old}+x) =\|w^{old}\|^2 + 2w^{old} \cdot x + \|x\|^2
+\]
+Let $R=\|x\|$. Also, since we made a mistake on the positive example, $w^{old} \cdot x < 0$. Thus,
+\[
+\|w^{new}\|^2 \le \|w^{old}\|^2 + R^2
+\]
+Since the weight vector is initialized 0, we get
+\begin{equation}
+\|w\|^2 \le \#mistakes \times R^2
+\end{equation}
+By the definition of cosine function,
+\[
+cos \phi = \frac{v \cdot w}{\|v\|\|w\|}
+\]
+Since $\|v\|=1$,
+\begin{equation}
+cos \phi = \frac{v \cdot w}{\|v\|\|w\|}=\frac{v \cdot w}{\|w\|} \le 1
+\end{equation}
+By plugging the equation (3) and (4) into (5), we get
+\[
+\frac{\gamma \; \sqrt[]{\#mistakes}}{R} \le 1
+\]
+Thus,
+\begin{equation}
+\# mistakes \le \frac{R^2}{\gamma^2}
+\end{equation}
 
 \end{document}
 
