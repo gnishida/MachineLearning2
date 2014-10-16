@@ -52,7 +52,7 @@ For every variable, there are two cases, active or not active. Thus, the size of
 \item Let $CON_L$ be the set of all linear functions defined over $n$ boolean variables that are consistent with the functions in $CON_B$. What is the size of $CON_L$?
 
 {\bf Answer:}\\
-Given a monotone conjunction, one example of the equivalent linear functions is defined by the sign of the summation of all the active literals subtracted by (the number of the active literals - 1). For instance, for a monotone conjunction $f_b = x_1 \wedge x_3 \wedge x_5$, the corresponding linear function is $f_l = {\rm sign}(x_1 + x_3 + x_5 - 2)$. However, the linear function can have any positive real nubmer as the coefficient of each literal. In the above case, any linear function $f_l^\prime = {\rm sign}(a x_1 + a x_3 + a x_5 - 2a)$ for $a \in \mathbb{R}; a > 0$, is consistent with $f_b$. Thus, the size of $CON_L$ is inifinite.
+Given a monotone conjunction, one example of the equivalent linear functions is defined by the sign of the summation of all the active literals subtracted by (the number of the active literals - 1). For instance, for a monotone conjunction $f_b = x_1 \wedge x_3 \wedge x_5$, the corresponding linear function is $f_l = {\rm sign}(x_1 + x_3 + x_5 - 2)$. However, the linear function can have any positive real nubmer as the coefficient of each literal. In the above case, any linear function $f_{l1} = {\rm sign}(a x_1 + a x_3 + a x_5 - 2a)$ for $a \in \mathbb{R}; a > 0$, is consistent with $f_b$. Any linear function $f_{l2} = {\rm sign}(x_1 + x_3 + x_5 - b)$ for $2 \le b < 3$, is also consistent with $f_b$ as well. Thus, the size of $CON_L$ is inifinite.
 
 \item Define in one sentence: Mistake bound.
 
@@ -107,11 +107,9 @@ When both classifiers converge, no more mistakes will be made in the case of the
 
 {\bf Answer:}\\
 Every active conjunctions of size at most $k$ is a combination of positive or negative literals $l_i \in L$ that have the same value in $x$ and $y$ (i.e. $|L|=same(x,y)$). Then, counting the active conjunctions of size at most $k$ is reduced to selecting a set of literals of size at most $k$ from $L$. Thus,
-
 \[
-K(x, y)={}_{same(x,y)} C _0 + {}_{same(x,y)} C _1 + {}_{same(x,y)} C _2 + \cdots + {}_{same(x,y)} C _k
+K(x, y)={}_{same(x,y)} C _0 + {}_{same(x,y)} C _1 + {}_{same(x,y)} C _2 + \cdots + {}_{same(x,y)} C _k=\sum_{i=0}^{k} {}_{same(x,y)} C _i
 \]
-
 \end{enumerate}
 
 \section{Programming Assignment}
